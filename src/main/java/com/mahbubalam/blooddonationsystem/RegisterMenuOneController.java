@@ -1,5 +1,10 @@
 package com.mahbubalam.blooddonationsystem;
 
+import com.mahbubalam.blooddonationsystem.server.controller.AddressController;
+import com.mahbubalam.blooddonationsystem.server.controller.PasswordController;
+import com.mahbubalam.blooddonationsystem.server.controller.PersonController;
+import com.mahbubalam.blooddonationsystem.server.entity.*;
+import com.mahbubalam.blooddonationsystem.server.model.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,52 +12,304 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterMenuOneController implements Initializable {
+    private final Person p = Person.getInstanceOfModelPerson();
+    public Text firstNameWarning;
+    public Text lastNameWarning;
+    public Text genderWarning;
+    public Text bloodGroupWarning;
+    public Text dateOfBirthWarning;
+    public Text emailWarning;
+    public Text mobileWarning;
+    public Text passwordWarning;
+    public Text addressWarning;
     @FXML
-    private TextField firstName;
+    private TextField firstNameTextField;
     @FXML
-    private TextField lastName;
+    private TextField lastNameTextField;
     @FXML
-    private ComboBox<String> bloodGroup = new ComboBox<>();
+    private ComboBox<String> bloodGroupComboBox = new ComboBox<>();
     @FXML
-    private ComboBox<String> gender = new ComboBox<>();
-    private String[] bloodGroupsList = {"O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"};
-    private String[] genderList = {"male", "female", "other"};
+    private ComboBox<String> genderComboBox = new ComboBox<>();
+    private final String[] bloodGroupsList = {"O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"};
+    private final String[] genderList = {"Male", "Female", "Other"};
     @FXML
-    private DatePicker dateOfBirth;
-    @FXML
-    private TextField weight;
+    private DatePicker dateOfBirthDatePicker;
     @FXML
     private Button nextButton;
     @FXML
     private Parent root;
     @FXML
     private Stage registerStage;
+    //
+    public TextField thanaTextField;
+    @FXML
+    private TextField emailTextField;
+    @FXML
+    private TextField mobileNumTextField;
+    @FXML
+    private TextField nidNumTextField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private ComboBox<String> divisionComboBox = new ComboBox<>();
+    private final String[] divisionList = {"Dhaka", "Chattogram", "Rajshahi", "Sylhet", "Barisal", "Khulna", "Rangpur",
+            "Mymensingh"};
+    @FXML
+    private ComboBox<String> districtComboBox = new ComboBox<>();
+    private final String[] districtList = {"Dhaka","Faridpur","Gazipur","Gopalganj","Jamalpur","Kishoreganj","Madaripur",
+            "Manikganj","Munshiganj","Mymensingh","Narayanganj","Narsingdi","Netrokona","Rajbari","Shariatpur","Sherpur","Tangail","Bogra","Joypurhat","Naogaon","Natore","Nawabganj","Pabna","Rajshahi","Sirajgonj","Dinajpur","Gaibandha","Kurigram","Lalmonirhat","Nilphamari","Panchagarh","Rangpur","Thakurgaon","Barguna","Barisal","Bhola","Jhalokati","Patuakhali","Pirojpur","Bandarban","Brahmanbaria","Chandpur","Chittagong","Comilla","Cox''s Bazar","Feni","Khagrachari","Lakshmipur","Noakhali","Rangamati","Habiganj","Maulvibazar","Sunamganj","Sylhet","Bagerhat","Chuadanga","Jessore","Jhenaidah","Khulna","Kushtia","Magura","Meherpur","Narail","Satkhira"};
+    @FXML
+    private Button registerButton;
+
+
+    private String password;
+
+    private String division;
+    private String district;
+    private String thana;
+    private String nid;
+    final String  emailRegex = "^(.+)@(.+)$";
+    final String  passwordRegex = "^(?=.*[0-9])\"\n" +
+            "                       + \"(?=.*[a-z])(?=.*[A-Z])\"\n" +
+            "                       + \"(?=.*[@#$%^&+=])\"\n" +
+            "                       + \"(?=\\\\S+$).{8,20}$";
+    Pattern pattern;
+    Matcher matcher;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        bloodGroup.getItems().addAll(bloodGroupsList);
-        gender.getItems().addAll(genderList);
+        bloodGroupComboBox.getItems().addAll(bloodGroupsList);
+        genderComboBox.getItems().addAll(genderList);
+        divisionComboBox.getItems().addAll(divisionList);
+        districtComboBox.getItems().addAll(districtList);
     }
 
     @FXML
     protected void onClickNextButton(ActionEvent event){
         try {
-            root = FXMLLoader.load(getClass().getResource("registerview-two.fxml"));
-            registerStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            registerStage.setScene(new Scene(root));
-            registerStage.show();
+            if (fieldCheckOne()){
+                takingInputFromOne();
+                nextPage("registerview-two.fxml", event);
+            }
+
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private void nextPage(String name, ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(name)));
+        registerStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        registerStage.setScene(new Scene(root));
+        registerStage.show();
+    }
+
+    private boolean fieldCheckOne() {
+        if (firstNameTextField.getText().isBlank()){
+            firstNameWarning.setText("first name can't be empty");
+            return false;
+        }
+        if (lastNameTextField.getText().isBlank()){
+            lastNameWarning.setText("last name can't be empty");
+            return false;
+        }
+
+        if (genderComboBox.getValue()==null){
+           genderWarning.setText("gender can't be empty");
+            return false;
+        }
+        if (bloodGroupComboBox.getValue()==null){
+            bloodGroupWarning.setText("blood group can't be empty");
+            return false;
+        }
+        if (dateOfBirthDatePicker.getValue()==null){
+            dateOfBirthWarning.setText("birth date can't be empty");
+            return false;
+        }
+        return true;
+    }
+    private boolean fieldCheckTwo() {
+        if (emailTextField.getText().isBlank()){
+            emailWarning.setText("email required");
+            return false;
+        }
+        if (mobileNumTextField.getText().isBlank()){
+            lastNameWarning.setText("mobile no required");
+            return false;
+        }
+        if (passwordField.getText().isEmpty()){
+            genderWarning.setText("password required");
+            return false;
+        }
+        if (divisionComboBox.getValue()==null){
+            addressWarning.setText("division required");
+            return false;
+        } else if (districtComboBox.getValue()==null){
+            addressWarning.setText("district required");
+            return false;
+        } else if (thanaTextField.getText().isBlank()) {
+            addressWarning.setText("thana required");
+            return false;
+        }
+//        if (!checkPasswordIsStrong())return false;
+        if (!checkIsValidEmail())return false;
+        return true;
+    }
+
+    private void takingInputFromOne() {
+        p.setDateOfBirth(String.valueOf(dateOfBirthDatePicker.getValue()));
+        p.setFirstName(firstNameTextField.getText());
+        p.setLastName(lastNameTextField.getText());
+
+    }
+    private void takingInputFromTwo(){
+        p.setPhoneNumber(mobileNumTextField.getText());
+        p.setEmail(emailTextField.getText());
+        password = passwordField.getText();
+        district=districtComboBox.getValue();
+        thana=thanaTextField.getText();
+        division=divisionComboBox.getValue();
+        nid=nidNumTextField.getText();
+    }
+
+    @FXML
+    protected void onClickRegisterButton(ActionEvent event){
+
+            if (fieldCheckTwo()){
+                takingInputFromTwo();
+
+                try {
+                    AddressController.saveAddress(new Address(division,district,thana));
+                    PasswordController.savePassword(new Password(password));
+                    PersonController.savePerson(p.getFirstName(),p.getLastName(),p.getPhoneNumber(),p.getEmail(),p.getDateOfBirth(),p.getBloodGroup(),p.getGender());
+                    nextPage("login-view.fxml", event);
+                } catch (SQLException | ClassNotFoundException | IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+
+    }
+
+    public void onClickBloodGroupComboBox(ActionEvent event) {
+        bloodGroupWarning.setText("");
+        String Group = bloodGroupComboBox.getValue();
+
+        switch(Group) {
+            case "O+":
+                p.setBloodGroup(BloodGroup.O_POSITIVE);
+                break;
+            case "O-":
+                p.setBloodGroup(BloodGroup.O_NEGATIVE);
+
+                break;
+            case "A+":
+                p.setBloodGroup(BloodGroup.A_POSITIVE);
+
+                break;
+            case "A-":
+                p.setBloodGroup(BloodGroup.A_NEGATIVE);
+
+                break;
+            case "B+":
+                p.setBloodGroup(BloodGroup.B_POSITIVE);
+
+                break;
+            case "B-":
+                p.setBloodGroup(BloodGroup.B_NEGATIVE);
+
+                break;
+            case "AB+":
+                p.setBloodGroup(BloodGroup.AB_POSITIVE);
+
+                break;
+            case "AB-":
+                p.setBloodGroup(BloodGroup.AB_NEGATIVE);
+
+                break;
+
+        }
+    }
+
+    public void onClickGenderComboBox(ActionEvent event) {
+        genderWarning.setText("");
+        String genderA = genderComboBox.getValue();
+        switch(genderA) {
+            case "Male":
+                p.setGender(Gender.MALE);
+                break;
+            case "Female":
+                p.setGender(Gender.FEMALE);
+                break;
+            case "Other":
+                p.setGender(Gender.COMMON);
+                break;
+        }
+
+    }
+
+
+    public void onClickDateOfBirthDatePicker(ActionEvent event) {
+        dateOfBirthWarning.setText("");
+        dateOfBirthDatePicker.setEditable(false);
+
+    }
+
+
+    public void onKeyReleasedFirstNameTextField(KeyEvent keyEvent) {
+firstNameWarning.setText("");
+    }
+
+    public void onKeyReleasedLastNameTextField(KeyEvent keyEvent) {
+        lastNameWarning.setText("");
+    }
+
+    public void onKeyReleaseEmailInputValidation(KeyEvent keyEvent) {
+
+        if (!checkIsValidEmail()){
+            emailWarning.setText("invalid Email");
+        }else emailWarning.setText("");
+    }
+
+    public void onKeyReleaseMobileTextField(KeyEvent keyEvent) {
+        mobileWarning.setText("");
+    }
+
+    public void onKeyReleasePasswordStrengthValidation(KeyEvent keyEvent) {
+        if (!checkPasswordIsStrong()){
+            passwordWarning.setText("weak password");
+        }else passwordWarning.setText("strong password");
+    }
+    private boolean checkPasswordIsStrong(){
+        return Pattern.compile(passwordRegex).matcher(passwordField.getText()).matches();
+    }
+    private boolean checkIsValidEmail(){
+        return Pattern.compile(emailRegex).matcher(emailTextField.getText()).matches();
+    }
+
+    public void onClickDivision(ActionEvent event) {
+        addressWarning.setText("");
+    }
+
+    public void onClickDistrict(ActionEvent event) {
+        addressWarning.setText("");
+    }
+
+    public void onClickThana(ActionEvent event) {
+        addressWarning.setText("");
     }
 }

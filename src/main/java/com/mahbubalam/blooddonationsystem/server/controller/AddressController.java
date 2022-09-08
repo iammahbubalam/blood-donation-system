@@ -6,21 +6,29 @@ import com.mahbubalam.blooddonationsystem.server.provider.ConnectionProvider;
 import java.sql.*;
 
 public class AddressController {
-    public static int saveAddress(Address address) throws SQLException, ClassNotFoundException {
+//    public static int saveAddress(Address address) throws SQLException, ClassNotFoundException {
+//
+//        int addressId = 0;
+//        Connection connection = ConnectionProvider.createConnection();
+//        String addressQuarry = "insert  into  address(country, district, division, sub_district)   values('" + address.getCountry() + "','" + address.getDivision() + "','" + address.getDistrict() + "','" + address.getSubDistrict() + "');";
+//        PreparedStatement preparedStatement = connection.prepareStatement(addressQuarry, Statement.RETURN_GENERATED_KEYS);
+//        preparedStatement.executeUpdate();
+//        ResultSet resultSe = preparedStatement.getGeneratedKeys();
+//
+//        while (resultSe.next()){
+//            addressId=resultSe.getInt(1);
+//        }
+//
+//        return addressId;
+//    }
+public static void saveAddress(Address address) throws SQLException, ClassNotFoundException {
+    Connection connection = ConnectionProvider.createConnection();
+    String addressQuarry = "insert  into  address(country, district, division, sub_district)   values('" + address.getCountry() + "','" + address.getDivision() + "','" + address.getDistrict() + "','" + address.getSubDistrict() + "');";
+    PreparedStatement preparedStatement = connection.prepareStatement(addressQuarry);
+    boolean a =preparedStatement.execute();
+    connection.close();
 
-        int addressId = 0;
-        Connection connection = ConnectionProvider.createConnection();
-        String addressQuarry = "insert  into  address(country, district, division, sub_district)   values('" + address.getCountry() + "','" + address.getDivision() + "','" + address.getDistrict() + "','" + address.getSubDistrict() + "');";
-        PreparedStatement preparedStatement = connection.prepareStatement(addressQuarry, Statement.RETURN_GENERATED_KEYS);
-        preparedStatement.executeUpdate();
-        ResultSet resultSe = preparedStatement.getGeneratedKeys();
-
-        while (resultSe.next()){
-            addressId=resultSe.getInt(1);
-        }
-
-        return addressId;
-    }
+}
 
     public static boolean updateAddress(int id, Address address) {
         Connection connection = null;

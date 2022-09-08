@@ -1,17 +1,21 @@
 package com.mahbubalam.blooddonationsystem.server.entity;
 
 
-import java.util.Date;
 import java.util.List;
 
 public class Person {
 
+    public static final Person personInstance = new Person();
+
+    public static Person getInstance(){
+        return personInstance;
+    }
     private int id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String email;
-    private Date dateOfBirth;
+    private String dateOfBirth;
     private Password password;
     private BloodGroup bloodGroup;
     private Gender gender;
@@ -19,7 +23,6 @@ public class Person {
     private boolean readyToDonate = true;
     private boolean needBlood;
     private List<Donation> givenDonation;
-
     private List<Donation> receivedDonation;
     int addressId;
     int passwordId;
@@ -27,7 +30,7 @@ public class Person {
     public Person() {
     }
 
-    public Person(String firstName, String lastName, String phoneNumber, String email, Date dateOfBirth, BloodGroup bloodGroup, Gender gender, int addressId, int passwordId) {
+    public Person(String firstName, String lastName, String phoneNumber, String email, String dateOfBirth, BloodGroup bloodGroup, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -35,22 +38,6 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
         this.bloodGroup = bloodGroup;
         this.gender = gender;
-        this.addressId = addressId;
-        this.passwordId = passwordId;
-    }
-
-    public Person(String firstName, String lastName, String phoneNumber, String email, Date dateOfBirth, Password password, BloodGroup bloodGroup, Gender gender, Address address, List<Donation> givenDonation, List<Donation> receivedDonation) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.password = password;
-        this.bloodGroup = bloodGroup;
-        this.gender = gender;
-        this.address = address;
-        this.givenDonation = givenDonation;
-        this.receivedDonation = receivedDonation;
     }
 
     public int getAddressId() {
@@ -65,8 +52,13 @@ public class Person {
         return passwordId;
     }
 
-    public void setPasswordfd(int passwordId) {
+    public void setPasswordId(int passwordId) {
         this.passwordId = passwordId;
+    }
+
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -161,12 +153,12 @@ public class Person {
         return id;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth =dateOfBirth;
     }
 
     @Override

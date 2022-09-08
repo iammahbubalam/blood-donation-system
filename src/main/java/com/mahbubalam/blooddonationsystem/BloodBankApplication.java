@@ -16,6 +16,7 @@ public class BloodBankApplication extends Application {
         primaryStage.setTitle("Blood Bank");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
     }
 
     public static void main(String[] args) {
@@ -26,8 +27,8 @@ public class BloodBankApplication extends Application {
 //        Connection connection= ConnectionProvider.createConnection();
 //        Address address = new Address("Chittagong", "Chandpur", "hajigonj", null);
 //        String addressQuarry = "insert  into  address(country, district, division, sub_district)   values('"+address.getCountry()+"','"+address.getDivision()+"','"+address.getDistrict()+"','"+address.getSubDistrict()+"');";
-////        String passwordQuarry = "insert  into  Password(password)  values(?);";
-////        String quarry = "insert into  Person(address_id, blood_group, date_of_birth, email, firstName, gender, lastName, password_id, phone_number, ready_to_donate) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+//        String passwordQuarry = "insert  into  Password(password)  values(?);";
+//        String quarry = "insert into  Person(address_id, blood_group, date_of_birth, email, firstName, gender, lastName, password_id, phone_number, ready_to_donate) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 //        PreparedStatement preparedStatement = connection.prepareStatement(addressQuarry);
 //        preparedStatement.execute();
 //        ResultSet resultSet = AddressController.saveAddress(address);

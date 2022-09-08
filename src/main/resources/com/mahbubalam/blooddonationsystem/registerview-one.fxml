@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.RegisterMenuOneController">
    <children>
@@ -15,12 +16,12 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="firstName" layoutX="154.0" layoutY="131.0" prefWidth="200.0" promptText="Your First Name">
+      <TextField fx:id="firstNameTextField" layoutX="154.0" layoutY="131.0" onKeyReleased="#onKeyReleasedFirstNameTextField" prefWidth="200.0" promptText="Your First Name">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="lastName" layoutX="559.0" layoutY="131.0" prefWidth="200.0" promptText="Your Last Name">
+      <TextField fx:id="lastNameTextField" layoutX="559.0" layoutY="131.0" onKeyReleased="#onKeyReleasedLastNameTextField" prefWidth="200.0" promptText="Your Last Name">
          <font>
             <Font size="18.0" />
          </font>
@@ -35,9 +36,9 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="bloodGroup" layoutX="559.0" layoutY="229.0" prefHeight="39.0" prefWidth="200.0" promptText="Choose" />
-      <DatePicker fx:id="dateOfBirth" layoutX="154.0" layoutY="335.0" prefHeight="39.0" prefWidth="200.0" promptText="Must be older than 16" />
-      <ComboBox fx:id="gender" layoutX="154.0" layoutY="231.0" prefHeight="39.0" prefWidth="200.0" promptText="Choose" />
+      <ComboBox fx:id="bloodGroupComboBox" layoutX="559.0" layoutY="229.0" onAction="#onClickBloodGroupComboBox" prefHeight="39.0" prefWidth="200.0" promptText="Choose" />
+      <DatePicker fx:id="dateOfBirthDatePicker" layoutX="154.0" layoutY="335.0" onAction="#onClickDateOfBirthDatePicker" prefHeight="39.0" prefWidth="200.0" promptText="Must be older than 16" />
+      <ComboBox fx:id="genderComboBox" layoutX="154.0" layoutY="231.0" onAction="#onClickGenderComboBox" prefHeight="39.0" prefWidth="200.0" promptText="Choose" />
       <Label layoutX="42.0" layoutY="235.0" text="Gender:">
          <font>
             <Font size="18.0" />
@@ -58,15 +59,10 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="weight" layoutX="559.0" layoutY="335.0" prefWidth="200.0" promptText="Must be above 50kg">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <Label layoutX="447.0" layoutY="339.0" text="Weight:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
+      <Text fx:id="firstNameWarning" fill="#d33737" layoutX="154.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+      <Text fx:id="lastNameWarning" fill="#d33737" layoutX="559.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+      <Text fx:id="genderWarning" fill="#d33737" layoutX="154.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+      <Text fx:id="bloodGroupWarning" fill="#d33737" layoutX="559.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+      <Text fx:id="dateOfBirthWarning" fill="#d33737" layoutX="154.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
    </children>
 </AnchorPane>

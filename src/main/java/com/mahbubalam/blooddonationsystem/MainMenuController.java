@@ -1,5 +1,6 @@
 package com.mahbubalam.blooddonationsystem;
 
+import com.mahbubalam.blooddonationsystem.server.entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.util.Objects;
 
 public class MainMenuController {
     @FXML
@@ -37,14 +40,18 @@ public class MainMenuController {
     @FXML
     private Stage mainMenuStage;
 
+    User user=User.getInstance();
+
     @FXML
     protected void onClickEditProfileButton(ActionEvent event){
         try{
-            root = FXMLLoader.load(getClass().getResource("editprofile-view.fxml"));
-            mainMenuStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            mainMenuStage.setTitle("Blood Bank");
-            mainMenuStage.setScene(new Scene(root));
-            mainMenuStage.show();
+//            root = FXMLLoader.load(getClass().getResource("editprofile-view.fxml"));
+//            mainMenuStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+//            mainMenuStage.setTitle("Blood Bank");
+//            mainMenuStage.setScene(new Scene(root));
+//            mainMenuStage.show();
+            firstName.setText(user.getName());
+
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -52,7 +59,7 @@ public class MainMenuController {
     @FXML
     public void onClickUserProfileButton(ActionEvent event){
         try{
-            root = FXMLLoader.load(getClass().getResource("mainmenu-view.fxml"));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainmenu-view.fxml")));
             mainMenuStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             mainMenuStage.setTitle("BloodBank");
             mainMenuStage.setScene(new Scene(root));
@@ -65,7 +72,7 @@ public class MainMenuController {
     @FXML
     public void onClickLogOutButton(ActionEvent event){
         try {
-            root = FXMLLoader.load(getClass().getResource("login-view.fxml"));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
             mainMenuStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             mainMenuStage.setTitle("BloodBank");
             mainMenuStage.setScene(new Scene(root));

@@ -1,5 +1,6 @@
 package com.mahbubalam.blooddonationsystem.server.controller;
 
+import com.mahbubalam.blooddonationsystem.server.entity.User;
 import com.mahbubalam.blooddonationsystem.server.provider.ConnectionProvider;
 
 import java.sql.Connection;
@@ -8,27 +9,61 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AuthenticationController {
-    public static int isAuthenticate(String phone, String password) throws ClassNotFoundException, SQLException {
+    public static boolean authenticateWithPhoneNo(String phone, String password) throws ClassNotFoundException, SQLException {
         int personId = 0;
-        String pas = null;
-        String phoneNO = null;
+        String passwordFromDb = null;
+        String phoneNoFromDb = null;
+        String emailFromDb = null;
+        String parsonName = null;
         Connection connection = ConnectionProvider.createConnection();
-        String addressQuarry = "SELECT person.id,person.phone_number , person.email , password.id , password.password FROM person RIGHT JOIN password ON person.password_id=password.id WHERE phone_number='" + phone + "';";
+        String addressQuarry = "SELECT person.id ,person.first_name,person.last_name, person.phone_number , person.email , password.id , password.password FROM person RIGHT JOIN password ON person.password_id=password.id WHERE phone_number='" + phone + "';";
         PreparedStatement preparedStatement = connection.prepareStatement(addressQuarry);
         preparedStatement.executeQuery();
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             personId = resultSet.getInt(1);
-            phoneNO = resultSet.getString(2);
-            pas = resultSet.getString(5);
+            parsonName = resultSet.getString(2)+" "+resultSet.getString(3);
+            phoneNoFromDb = resultSet.getString(4);
+            emailFromDb=resultSet.getString(5);
+            passwordFromDb = resultSet.getString(7);
         }
-        if (password.equals(pas) && phone.equals(phoneNO)) return personId;
+        User.getInstance().setUserId(personId);
+        User.getInstance().setUserPhoneNo(phoneNoFromDb);
+        User.getInstance().setUserEmail(emailFromDb);
+        User.getInstance().setName(parsonName);
+        if (password.equals(passwordFromDb) && phone.equals(phoneNoFromDb)) return true;
 
-        return 0;
+        return false;
+    }
+    public static boolean authenticateWithEmail(String email, String password) throws ClassNotFoundException, SQLException {
+        int personId = 0;
+        String passwordFromDb = null;
+        String phoneNoFromDb = null;
+        String emailFromDb = null;
+        String parsonName = null;
+        Connection connection = ConnectionProvider.createConnection();
+        String addressQuarry = "SELECT person.id ,person.first_name,person.last_name, person.phone_number , person.email , password.id , password.password FROM person RIGHT JOIN password ON person.password_id=password.id WHERE email='" + email + "';";
+        PreparedStatement preparedStatement = connection.prepareStatement(addressQuarry);
+        preparedStatement.executeQuery();
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            personId = resultSet.getInt(1);
+            parsonName = resultSet.getString(2)+" "+resultSet.getString(3);
+            phoneNoFromDb = resultSet.getString(4);
+            emailFromDb=resultSet.getString(5);
+            passwordFromDb = resultSet.getString(7);
+
+        }
+        User.getInstance().setUserId(personId);
+        User.getInstance().setUserPhoneNo(phoneNoFromDb);
+        User.getInstance().setUserEmail(emailFromDb);
+        User.getInstance().setName(parsonName);
+        if (password.equals(passwordFromDb) && email.equals(emailFromDb)) return true;
+
+        return false;
     }
 
     public static boolean isAuthentic(String phone, String password) throws ClassNotFoundException, SQLException {
-        int personId = 0;
         String pas = null;
         String phoneNO = null;
         Connection connection = ConnectionProvider.createConnection();
@@ -37,7 +72,6 @@ public class AuthenticationController {
         preparedStatement.executeQuery();
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            personId = resultSet.getInt(1);
             phoneNO = resultSet.getString(2);
             pas = resultSet.getString(5);
         }
@@ -57,8 +91,8 @@ public class AuthenticationController {
     public static int isExist(String phone) throws ClassNotFoundException, SQLException {
         int passwordId = 0;
         Connection connection = ConnectionProvider.createConnection();
-        String addressQuarry = "SELECT * From person WHERE  phone_number ='" + phone + "';";
-        PreparedStatement preparedStatement = connection.prepareStatement(addressQuarry);
+        String personQuarry = "SELECT * From person WHERE  phone_number ='" + phone + "';";
+        PreparedStatement preparedStatement = connection.prepareStatement(personQuarry);
         preparedStatement.executeQuery();
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
