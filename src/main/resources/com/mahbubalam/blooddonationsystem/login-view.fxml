@@ -19,7 +19,7 @@
       <Label layoutX="57.0" layoutY="239.0" text="Email/Mobile:" />
       <Label layoutX="57.0" layoutY="279.0" text="Password:" />
       <PasswordField fx:id="passwordInputField" layoutX="150.0" layoutY="275.0" prefHeight="25.0" prefWidth="197.0" />
-      <Button fx:id="loginButton" layoutX="177.0" layoutY="334.0" mnemonicParsing="false" onAction="#onLoginButtonClick" text="Log In" />
+      <Button fx:id="loginButton" layoutX="182.0" layoutY="331.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="25.0" prefWidth="98.0" text="Log In" />
       <Label layoutX="133.0" layoutY="506.0" text="Doesn't have an account?" />
       <Button fx:id="registerButton" layoutX="171.0" layoutY="534.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" text="Register" />
       <Text fx:id="showWarning" fill="#801313" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="400.0">

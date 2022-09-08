@@ -27,11 +27,14 @@ public class AuthenticationController {
             emailFromDb=resultSet.getString(5);
             passwordFromDb = resultSet.getString(7);
         }
-        User.getInstance().setUserId(personId);
-        User.getInstance().setUserPhoneNo(phoneNoFromDb);
-        User.getInstance().setUserEmail(emailFromDb);
-        User.getInstance().setName(parsonName);
-        if (password.equals(passwordFromDb) && phone.equals(phoneNoFromDb)) return true;
+
+        if (password.equals(passwordFromDb) && phone.equals(phoneNoFromDb)){
+            User.getInstance().setUserId(personId);
+            User.getInstance().setUserPhoneNo(phoneNoFromDb);
+            User.getInstance().setUserEmail(emailFromDb);
+            User.getInstance().setName(parsonName);
+            return true;
+        }
 
         return false;
     }
@@ -54,11 +57,14 @@ public class AuthenticationController {
             passwordFromDb = resultSet.getString(7);
 
         }
-        User.getInstance().setUserId(personId);
-        User.getInstance().setUserPhoneNo(phoneNoFromDb);
-        User.getInstance().setUserEmail(emailFromDb);
-        User.getInstance().setName(parsonName);
-        if (password.equals(passwordFromDb) && email.equals(emailFromDb)) return true;
+
+        if (password.equals(passwordFromDb) && email.equals(emailFromDb)){
+            User.getInstance().setUserId(personId);
+            User.getInstance().setUserPhoneNo(phoneNoFromDb);
+            User.getInstance().setUserEmail(emailFromDb);
+            User.getInstance().setName(parsonName);
+            return true;
+        }
 
         return false;
     }

@@ -2,7 +2,6 @@ package com.mahbubalam.blooddonationsystem.server.model;
 
 import com.mahbubalam.blooddonationsystem.server.entity.BloodGroup;
 import com.mahbubalam.blooddonationsystem.server.entity.Gender;
-import com.mahbubalam.blooddonationsystem.server.entity.Password;
 
 public class Person {
     public  static final Person instance = new Person();

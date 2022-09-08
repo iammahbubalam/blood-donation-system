@@ -14,7 +14,7 @@
       <TextField fx:id="emailTextField" layoutX="156.0" layoutY="127.0" onKeyReleased="#onKeyReleaseEmailInputValidation" prefHeight="39.0" prefWidth="200.0" promptText="Your primary email" />
       <TextField fx:id="mobileNumTextField" layoutX="156.0" layoutY="223.0" onKeyReleased="#onKeyReleaseMobileTextField" prefHeight="39.0" prefWidth="200.0" promptText="Your primary contact number" />
       <TextField fx:id="nidNumTextField" layoutX="556.0" layoutY="125.0" prefHeight="39.0" prefWidth="200.0" promptText="Your national id number" />
-      <PasswordField fx:id="passwordField" layoutX="556.0" layoutY="223.0" onKeyPressed="#onKeyReleasePasswordStrengthValidation" prefHeight="39.0" prefWidth="200.0" promptText="Choose a strong password" />
+      <PasswordField fx:id="passwordField" layoutX="556.0" layoutY="223.0" prefHeight="39.0" prefWidth="200.0" promptText="Choose a strong password" />
       <Label layoutX="444.0" layoutY="227.0" text="Password:">
          <font>
             <Font size="18.0" />

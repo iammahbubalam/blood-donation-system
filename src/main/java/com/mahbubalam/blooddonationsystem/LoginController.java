@@ -32,6 +32,9 @@ public class LoginController {
 
     @FXML
     protected void onLoginButtonClick(ActionEvent event){
+        if (!inputFieldValidate()){
+            return;
+        }
         String emailOrPhone = emailOrPhoneInputField.getText();
         String password = passwordInputField.getText();
         boolean isAuthenticate;
@@ -82,4 +85,15 @@ public class LoginController {
         }
     }
 
+    private boolean inputFieldValidate(){
+        if (emailOrPhoneInputField.getText().isBlank()){
+            showWarning.setText("email or phone is required");
+            return false;
+        }
+        if (passwordInputField.getText().isBlank()){
+            showWarning.setText("password is required");
+            return false;
+        }
+        return true;
+    }
 }

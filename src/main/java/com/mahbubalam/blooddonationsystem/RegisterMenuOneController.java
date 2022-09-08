@@ -82,10 +82,6 @@ public class RegisterMenuOneController implements Initializable {
     private String thana;
     private String nid;
     final String  emailRegex = "^(.+)@(.+)$";
-    final String  passwordRegex = "^(?=.*[0-9])\"\n" +
-            "                       + \"(?=.*[a-z])(?=.*[A-Z])\"\n" +
-            "                       + \"(?=.*[@#$%^&+=])\"\n" +
-            "                       + \"(?=\\\\S+$).{8,20}$";
     Pattern pattern;
     Matcher matcher;
 
@@ -289,14 +285,8 @@ firstNameWarning.setText("");
         mobileWarning.setText("");
     }
 
-    public void onKeyReleasePasswordStrengthValidation(KeyEvent keyEvent) {
-        if (!checkPasswordIsStrong()){
-            passwordWarning.setText("weak password");
-        }else passwordWarning.setText("strong password");
-    }
-    private boolean checkPasswordIsStrong(){
-        return Pattern.compile(passwordRegex).matcher(passwordField.getText()).matches();
-    }
+
+
     private boolean checkIsValidEmail(){
         return Pattern.compile(emailRegex).matcher(emailTextField.getText()).matches();
     }
