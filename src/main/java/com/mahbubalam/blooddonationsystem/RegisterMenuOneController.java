@@ -3,7 +3,10 @@ package com.mahbubalam.blooddonationsystem;
 import com.mahbubalam.blooddonationsystem.server.controller.AddressController;
 import com.mahbubalam.blooddonationsystem.server.controller.PasswordController;
 import com.mahbubalam.blooddonationsystem.server.controller.PersonController;
-import com.mahbubalam.blooddonationsystem.server.entity.*;
+import com.mahbubalam.blooddonationsystem.server.entity.Address;
+import com.mahbubalam.blooddonationsystem.server.entity.BloodGroup;
+import com.mahbubalam.blooddonationsystem.server.entity.Gender;
+import com.mahbubalam.blooddonationsystem.server.entity.Password;
 import com.mahbubalam.blooddonationsystem.server.model.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -25,7 +29,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegisterMenuOneController implements Initializable {
+    final String emailRegex = "^(.+)@(.+)$";
     private final Person p = Person.getInstanceOfModelPerson();
+    private final String[] bloodGroupsList = {"O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"};
+    private final String[] genderList = {"Male", "Female", "Other"};
+    private final String[] divisionList = {"Dhaka", "Chattogram", "Rajshahi", "Sylhet", "Barisal", "Khulna", "Rangpur",
+            "Mymensingh"};
+    private final String[] districtList = {"Dhaka", "Faridpur", "Gazipur", "Gopalganj", "Jamalpur", "Kishoreganj", "Madaripur",
+            "Manikganj", "Munshiganj", "Mymensingh", "Narayanganj", "Narsingdi", "Netrokona", "Rajbari", "Shariatpur", "Sherpur", "Tangail", "Bogra", "Joypurhat", "Naogaon", "Natore", "Nawabganj", "Pabna", "Rajshahi", "Sirajgonj", "Dinajpur", "Gaibandha", "Kurigram", "Lalmonirhat", "Nilphamari", "Panchagarh", "Rangpur", "Thakurgaon", "Barguna", "Barisal", "Bhola", "Jhalokati", "Patuakhali", "Pirojpur", "Bandarban", "Brahmanbaria", "Chandpur", "Chittagong", "Comilla", "Cox''s Bazar", "Feni", "Khagrachari", "Lakshmipur", "Noakhali", "Rangamati", "Habiganj", "Maulvibazar", "Sunamganj", "Sylhet", "Bagerhat", "Chuadanga", "Jessore", "Jhenaidah", "Khulna", "Kushtia", "Magura", "Meherpur", "Narail", "Satkhira"};
     public Text firstNameWarning;
     public Text lastNameWarning;
     public Text genderWarning;
@@ -35,6 +46,10 @@ public class RegisterMenuOneController implements Initializable {
     public Text mobileWarning;
     public Text passwordWarning;
     public Text addressWarning;
+    //
+    public TextField thanaTextField;
+    Pattern pattern;
+    Matcher matcher;
     @FXML
     private TextField firstNameTextField;
     @FXML
@@ -43,8 +58,6 @@ public class RegisterMenuOneController implements Initializable {
     private ComboBox<String> bloodGroupComboBox = new ComboBox<>();
     @FXML
     private ComboBox<String> genderComboBox = new ComboBox<>();
-    private final String[] bloodGroupsList = {"O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"};
-    private final String[] genderList = {"Male", "Female", "Other"};
     @FXML
     private DatePicker dateOfBirthDatePicker;
     @FXML
@@ -53,8 +66,6 @@ public class RegisterMenuOneController implements Initializable {
     private Parent root;
     @FXML
     private Stage registerStage;
-    //
-    public TextField thanaTextField;
     @FXML
     private TextField emailTextField;
     @FXML
@@ -65,26 +76,15 @@ public class RegisterMenuOneController implements Initializable {
     private PasswordField passwordField;
     @FXML
     private ComboBox<String> divisionComboBox = new ComboBox<>();
-    private final String[] divisionList = {"Dhaka", "Chattogram", "Rajshahi", "Sylhet", "Barisal", "Khulna", "Rangpur",
-            "Mymensingh"};
     @FXML
     private ComboBox<String> districtComboBox = new ComboBox<>();
-    private final String[] districtList = {"Dhaka","Faridpur","Gazipur","Gopalganj","Jamalpur","Kishoreganj","Madaripur",
-            "Manikganj","Munshiganj","Mymensingh","Narayanganj","Narsingdi","Netrokona","Rajbari","Shariatpur","Sherpur","Tangail","Bogra","Joypurhat","Naogaon","Natore","Nawabganj","Pabna","Rajshahi","Sirajgonj","Dinajpur","Gaibandha","Kurigram","Lalmonirhat","Nilphamari","Panchagarh","Rangpur","Thakurgaon","Barguna","Barisal","Bhola","Jhalokati","Patuakhali","Pirojpur","Bandarban","Brahmanbaria","Chandpur","Chittagong","Comilla","Cox''s Bazar","Feni","Khagrachari","Lakshmipur","Noakhali","Rangamati","Habiganj","Maulvibazar","Sunamganj","Sylhet","Bagerhat","Chuadanga","Jessore","Jhenaidah","Khulna","Kushtia","Magura","Meherpur","Narail","Satkhira"};
     @FXML
     private Button registerButton;
-
-
     private String password;
-
     private String division;
     private String district;
     private String thana;
     private String nid;
-    final String  emailRegex = "^(.+)@(.+)$";
-    Pattern pattern;
-    Matcher matcher;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -95,14 +95,14 @@ public class RegisterMenuOneController implements Initializable {
     }
 
     @FXML
-    protected void onClickNextButton(ActionEvent event){
+    protected void onClickNextButton(ActionEvent event) {
         try {
-            if (fieldCheckOne()){
+            if (fieldCheckOne()) {
                 takingInputFromOne();
                 nextPage("registerview-two.fxml", event);
             }
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -115,46 +115,47 @@ public class RegisterMenuOneController implements Initializable {
     }
 
     private boolean fieldCheckOne() {
-        if (firstNameTextField.getText().isBlank()){
+        if (firstNameTextField.getText().isBlank()) {
             firstNameWarning.setText("first name can't be empty");
             return false;
         }
-        if (lastNameTextField.getText().isBlank()){
+        if (lastNameTextField.getText().isBlank()) {
             lastNameWarning.setText("last name can't be empty");
             return false;
         }
 
-        if (genderComboBox.getValue()==null){
-           genderWarning.setText("gender can't be empty");
+        if (genderComboBox.getValue() == null) {
+            genderWarning.setText("gender can't be empty");
             return false;
         }
-        if (bloodGroupComboBox.getValue()==null){
+        if (bloodGroupComboBox.getValue() == null) {
             bloodGroupWarning.setText("blood group can't be empty");
             return false;
         }
-        if (dateOfBirthDatePicker.getValue()==null){
+        if (dateOfBirthDatePicker.getValue() == null) {
             dateOfBirthWarning.setText("birth date can't be empty");
             return false;
         }
         return true;
     }
+
     private boolean fieldCheckTwo() {
-        if (emailTextField.getText().isBlank()){
+        if (emailTextField.getText().isBlank()) {
             emailWarning.setText("email required");
             return false;
         }
-        if (mobileNumTextField.getText().isBlank()){
+        if (mobileNumTextField.getText().isBlank()) {
             lastNameWarning.setText("mobile no required");
             return false;
         }
-        if (passwordField.getText().isEmpty()){
+        if (passwordField.getText().isEmpty()) {
             genderWarning.setText("password required");
             return false;
         }
-        if (divisionComboBox.getValue()==null){
+        if (divisionComboBox.getValue() == null) {
             addressWarning.setText("division required");
             return false;
-        } else if (districtComboBox.getValue()==null){
+        } else if (districtComboBox.getValue() == null) {
             addressWarning.setText("district required");
             return false;
         } else if (thanaTextField.getText().isBlank()) {
@@ -162,7 +163,7 @@ public class RegisterMenuOneController implements Initializable {
             return false;
         }
 //        if (!checkPasswordIsStrong())return false;
-        if (!checkIsValidEmail())return false;
+        if (!checkIsValidEmail()) return false;
         return true;
     }
 
@@ -172,31 +173,32 @@ public class RegisterMenuOneController implements Initializable {
         p.setLastName(lastNameTextField.getText());
 
     }
-    private void takingInputFromTwo(){
+
+    private void takingInputFromTwo() {
         p.setPhoneNumber(mobileNumTextField.getText());
         p.setEmail(emailTextField.getText());
         password = passwordField.getText();
-        district=districtComboBox.getValue();
-        thana=thanaTextField.getText();
-        division=divisionComboBox.getValue();
-        nid=nidNumTextField.getText();
+        district = districtComboBox.getValue();
+        thana = thanaTextField.getText();
+        division = divisionComboBox.getValue();
+        nid = nidNumTextField.getText();
     }
 
     @FXML
-    protected void onClickRegisterButton(ActionEvent event){
+    protected void onClickRegisterButton(ActionEvent event) {
 
-            if (fieldCheckTwo()){
-                takingInputFromTwo();
+        if (fieldCheckTwo()) {
+            takingInputFromTwo();
 
-                try {
-                    AddressController.saveAddress(new Address(division,district,thana));
-                    PasswordController.savePassword(new Password(password));
-                    PersonController.savePerson(p.getFirstName(),p.getLastName(),p.getPhoneNumber(),p.getEmail(),p.getDateOfBirth(),p.getBloodGroup(),p.getGender());
-                    nextPage("login-view.fxml", event);
-                } catch (SQLException | ClassNotFoundException | IOException e) {
-                    throw new RuntimeException(e);
-                }
+            try {
+                AddressController.saveAddress(new Address(division, district, thana));
+                PasswordController.savePassword(new Password(password));
+                PersonController.savePerson(p.getFirstName(), p.getLastName(), p.getPhoneNumber(), p.getEmail(), p.getDateOfBirth(), p.getBloodGroup(), p.getGender());
+                nextPage("login-view.fxml", event);
+            } catch (SQLException | ClassNotFoundException | IOException e) {
+                throw new RuntimeException(e);
             }
+        }
 
 
     }
@@ -205,7 +207,7 @@ public class RegisterMenuOneController implements Initializable {
         bloodGroupWarning.setText("");
         String Group = bloodGroupComboBox.getValue();
 
-        switch(Group) {
+        switch (Group) {
             case "O+":
                 p.setBloodGroup(BloodGroup.O_POSITIVE);
                 break;
@@ -244,7 +246,7 @@ public class RegisterMenuOneController implements Initializable {
     public void onClickGenderComboBox(ActionEvent event) {
         genderWarning.setText("");
         String genderA = genderComboBox.getValue();
-        switch(genderA) {
+        switch (genderA) {
             case "Male":
                 p.setGender(Gender.MALE);
                 break;
@@ -267,7 +269,7 @@ public class RegisterMenuOneController implements Initializable {
 
 
     public void onKeyReleasedFirstNameTextField(KeyEvent keyEvent) {
-firstNameWarning.setText("");
+        firstNameWarning.setText("");
     }
 
     public void onKeyReleasedLastNameTextField(KeyEvent keyEvent) {
@@ -276,9 +278,9 @@ firstNameWarning.setText("");
 
     public void onKeyReleaseEmailInputValidation(KeyEvent keyEvent) {
 
-        if (!checkIsValidEmail()){
+        if (!checkIsValidEmail()) {
             emailWarning.setText("invalid Email");
-        }else emailWarning.setText("");
+        } else emailWarning.setText("");
     }
 
     public void onKeyReleaseMobileTextField(KeyEvent keyEvent) {
@@ -286,8 +288,7 @@ firstNameWarning.setText("");
     }
 
 
-
-    private boolean checkIsValidEmail(){
+    private boolean checkIsValidEmail() {
         return Pattern.compile(emailRegex).matcher(emailTextField.getText()).matches();
     }
 

@@ -1,16 +1,13 @@
-package com.mahbubalam.blooddonationsystem.server.entity;
+package com.mahbubalam.blooddonationsystem.server.model;
+
 
 public class User {
-    private  int userId ;
-    private String name;
-    private  String userEmail;
-    private  String userPhoneNo;
-    
     public static final User instanceOfUser = new User();
-    
-    public static User getInstance(){
-        return instanceOfUser;
-    }
+    private int userId;
+    private String name;
+    private String userEmail;
+    private String userPhoneNo;
+
     public User(int userId, String name, String userEmail, String userPhoneNo) {
         this.userId = userId;
         this.name = name;
@@ -18,7 +15,12 @@ public class User {
         this.userPhoneNo = userPhoneNo;
     }
 
+    public User() {
+    }
 
+    public static User getInstance() {
+        return instanceOfUser;
+    }
 
     public int getUserId() {
         return userId;
@@ -26,7 +28,6 @@ public class User {
 
     public void setUserId(int userId) {
         this.userId = userId;
-        Person.getInstance().setId(userId);
     }
 
     public String getUserEmail() {
@@ -35,7 +36,6 @@ public class User {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
-        Person.getInstance().setEmail(userEmail);
     }
 
     public String getUserPhoneNo() {
@@ -44,7 +44,6 @@ public class User {
 
     public void setUserPhoneNo(String userPhoneNo) {
         this.userPhoneNo = userPhoneNo;
-        Person.getInstance().setPhoneNumber(userPhoneNo);
     }
 
     public String getName() {
@@ -53,10 +52,5 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-        Person.getInstance().setFirstName(name.split(" ")[0]);
-        Person.getInstance().setLastName(name.split(" ")[1]);
-    }
-
-    public User() {
     }
 }

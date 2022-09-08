@@ -3,12 +3,14 @@ package com.mahbubalam.blooddonationsystem.server.controller;
 import com.mahbubalam.blooddonationsystem.server.entity.Password;
 import com.mahbubalam.blooddonationsystem.server.provider.ConnectionProvider;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class PasswordController {
 
 
-//    public static int savePassword(Password password) throws SQLException, ClassNotFoundException {
+    //    public static int savePassword(Password password) throws SQLException, ClassNotFoundException {
 //
 //        int passwordId=0;
 //        Connection connection = ConnectionProvider.createConnection();

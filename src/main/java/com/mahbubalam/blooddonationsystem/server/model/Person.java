@@ -4,11 +4,7 @@ import com.mahbubalam.blooddonationsystem.server.entity.BloodGroup;
 import com.mahbubalam.blooddonationsystem.server.entity.Gender;
 
 public class Person {
-    public  static final Person instance = new Person();
-
-    public static final Person getInstanceOfModelPerson(){
-        return instance;
-    }
+    public static final Person instance = new Person();
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -16,10 +12,12 @@ public class Person {
     private String dateOfBirth;
     private BloodGroup bloodGroup;
     private Gender gender;
-
     public Person() {
     }
 
+    public static final Person getInstanceOfModelPerson() {
+        return instance;
+    }
 
     public String getFirstName() {
         return firstName;

@@ -1,6 +1,6 @@
 package com.mahbubalam.blooddonationsystem.server.controller;
 
-import com.mahbubalam.blooddonationsystem.server.entity.User;
+import com.mahbubalam.blooddonationsystem.server.model.User;
 import com.mahbubalam.blooddonationsystem.server.provider.ConnectionProvider;
 
 import java.sql.Connection;
@@ -22,13 +22,13 @@ public class AuthenticationController {
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             personId = resultSet.getInt(1);
-            parsonName = resultSet.getString(2)+" "+resultSet.getString(3);
+            parsonName = resultSet.getString(2) + " " + resultSet.getString(3);
             phoneNoFromDb = resultSet.getString(4);
-            emailFromDb=resultSet.getString(5);
+            emailFromDb = resultSet.getString(5);
             passwordFromDb = resultSet.getString(7);
         }
 
-        if (password.equals(passwordFromDb) && phone.equals(phoneNoFromDb)){
+        if (password.equals(passwordFromDb) && phone.equals(phoneNoFromDb)) {
             User.getInstance().setUserId(personId);
             User.getInstance().setUserPhoneNo(phoneNoFromDb);
             User.getInstance().setUserEmail(emailFromDb);
@@ -38,6 +38,7 @@ public class AuthenticationController {
 
         return false;
     }
+
     public static boolean authenticateWithEmail(String email, String password) throws ClassNotFoundException, SQLException {
         int personId = 0;
         String passwordFromDb = null;
@@ -51,14 +52,14 @@ public class AuthenticationController {
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             personId = resultSet.getInt(1);
-            parsonName = resultSet.getString(2)+" "+resultSet.getString(3);
+            parsonName = resultSet.getString(2) + " " + resultSet.getString(3);
             phoneNoFromDb = resultSet.getString(4);
-            emailFromDb=resultSet.getString(5);
+            emailFromDb = resultSet.getString(5);
             passwordFromDb = resultSet.getString(7);
 
         }
 
-        if (password.equals(passwordFromDb) && email.equals(emailFromDb)){
+        if (password.equals(passwordFromDb) && email.equals(emailFromDb)) {
             User.getInstance().setUserId(personId);
             User.getInstance().setUserPhoneNo(phoneNoFromDb);
             User.getInstance().setUserEmail(emailFromDb);
