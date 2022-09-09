@@ -63,7 +63,7 @@ public class LoginController {
     @FXML
     protected void onRegisterButtonClick(ActionEvent event){
         try{
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("registerview-one.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("register-menu.fxml")));
             registerStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             registerStage.setTitle("Blood Bank");
             registerStage.setScene(new Scene(root));
