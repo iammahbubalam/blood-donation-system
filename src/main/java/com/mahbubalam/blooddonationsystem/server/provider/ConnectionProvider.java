@@ -13,11 +13,11 @@ public class ConnectionProvider {
         String password = "root";
         String url = "jdbc:mysql://localhost:3306/bloodbankdb";
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(url,user,password);
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        connection = DriverManager.getConnection(url, user, password);
 
 
-            return connection;
+        return connection;
     }
 
 }

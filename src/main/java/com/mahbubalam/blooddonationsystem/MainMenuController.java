@@ -1,6 +1,6 @@
 package com.mahbubalam.blooddonationsystem;
 
-import com.mahbubalam.blooddonationsystem.server.entity.User;
+import com.mahbubalam.blooddonationsystem.server.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,14 +15,15 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 public class MainMenuController {
+    public Button userProfileButton;
+    public Button logOutButton;
+    User user = User.getInstance();
     @FXML
     private ComboBox bloodGroup;
     @FXML
     private ComboBox gender;
     @FXML
     private Button editProfileButton;
-    public Button userProfileButton;
-    public Button logOutButton;
     @FXML
     private TextField firstName;
     @FXML
@@ -40,11 +41,9 @@ public class MainMenuController {
     @FXML
     private Stage mainMenuStage;
 
-    User user=User.getInstance();
-
     @FXML
-    protected void onClickEditProfileButton(ActionEvent event){
-        try{
+    protected void onClickEditProfileButton(ActionEvent event) {
+        try {
 //            root = FXMLLoader.load(getClass().getResource("editprofile-view.fxml"));
 //            mainMenuStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 //            mainMenuStage.setTitle("Blood Bank");
@@ -52,32 +51,33 @@ public class MainMenuController {
 //            mainMenuStage.show();
             firstName.setText(user.getName());
 
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-    @FXML
-    public void onClickUserProfileButton(ActionEvent event){
-        try{
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainmenu-view.fxml")));
-            mainMenuStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            mainMenuStage.setTitle("BloodBank");
-            mainMenuStage.setScene(new Scene(root));
-            mainMenuStage.show();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    public void onClickLogOutButton(ActionEvent event){
+    public void onClickUserProfileButton(ActionEvent event) {
         try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
-            mainMenuStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainmenu-view.fxml")));
+            mainMenuStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             mainMenuStage.setTitle("BloodBank");
             mainMenuStage.setScene(new Scene(root));
             mainMenuStage.show();
-        } catch (Exception e){
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void onClickLogOutButton(ActionEvent event) {
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
+            mainMenuStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            mainMenuStage.setTitle("BloodBank");
+            mainMenuStage.setScene(new Scene(root));
+            mainMenuStage.show();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

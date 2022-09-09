@@ -5,11 +5,8 @@ import java.util.List;
 
 public class Person {
 
-    public static final Person personInstance = new Person();
-
-    public static Person getInstance(){
-        return personInstance;
-    }
+    int addressId;
+    int passwordId;
     private int id;
     private String firstName;
     private String lastName;
@@ -17,20 +14,21 @@ public class Person {
     private String email;
     private String dateOfBirth;
     private Password password;
-    private BloodGroup bloodGroup;
-    private Gender gender;
+    private String bloodGroup;
+    private String gender;
     private Address address;
     private boolean readyToDonate = true;
     private boolean needBlood;
     private List<Donation> givenDonation;
     private List<Donation> receivedDonation;
-    int addressId;
-    int passwordId;
 
-    public Person() {
-    }
+//    public Person() {
+//    }
 
-    public Person(String firstName, String lastName, String phoneNumber, String email, String dateOfBirth, BloodGroup bloodGroup, Gender gender) {
+    public Person(int addressId, int passwordId, int id, String firstName, String lastName, String phoneNumber, String email, String dateOfBirth, String bloodGroup, String gender, boolean readyToDonate, boolean needBlood) {
+        this.addressId = addressId;
+        this.passwordId = passwordId;
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -38,6 +36,8 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
         this.bloodGroup = bloodGroup;
         this.gender = gender;
+        this.readyToDonate = readyToDonate;
+        this.needBlood = needBlood;
     }
 
     public int getAddressId() {
@@ -54,11 +54,6 @@ public class Person {
 
     public void setPasswordId(int passwordId) {
         this.passwordId = passwordId;
-    }
-
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -101,19 +96,19 @@ public class Person {
         this.password = password;
     }
 
-    public BloodGroup getBloodGroup() {
+    public String getBloodGroup() {
         return bloodGroup;
     }
 
-    public void setBloodGroup(BloodGroup bloodGroup) {
+    public void setBloodGroup(String bloodGroup) {
         this.bloodGroup = bloodGroup;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -153,29 +148,33 @@ public class Person {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getDateOfBirth() {
         return dateOfBirth;
     }
 
     public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth =dateOfBirth;
+        this.dateOfBirth = dateOfBirth;
     }
 
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
+                "addressId=" + addressId +
+                ", passwordId=" + passwordId +
+                ", id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", password=" + password +
-                ", bloodGroup=" + bloodGroup +
-                ", gender=" + gender +
-                ", address=" + address +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", bloodGroup='" + bloodGroup + '\'' +
+                ", gender='" + gender + '\'' +
                 ", readyToDonate=" + readyToDonate +
-                ", givenDonation=" + givenDonation +
-                ", receivedDonation=" + receivedDonation +
+                ", needBlood=" + needBlood +
                 '}';
     }
 

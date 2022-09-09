@@ -3,10 +3,12 @@ package com.mahbubalam.blooddonationsystem.server.controller;
 import com.mahbubalam.blooddonationsystem.server.entity.Address;
 import com.mahbubalam.blooddonationsystem.server.provider.ConnectionProvider;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class AddressController {
-//    public static int saveAddress(Address address) throws SQLException, ClassNotFoundException {
+    //    public static int saveAddress(Address address) throws SQLException, ClassNotFoundException {
 //
 //        int addressId = 0;
 //        Connection connection = ConnectionProvider.createConnection();
@@ -21,14 +23,14 @@ public class AddressController {
 //
 //        return addressId;
 //    }
-public static void saveAddress(Address address) throws SQLException, ClassNotFoundException {
-    Connection connection = ConnectionProvider.createConnection();
-    String addressQuarry = "insert  into  address(country, district, division, sub_district)   values('" + address.getCountry() + "','" + address.getDivision() + "','" + address.getDistrict() + "','" + address.getSubDistrict() + "');";
-    PreparedStatement preparedStatement = connection.prepareStatement(addressQuarry);
-    boolean a =preparedStatement.execute();
-    connection.close();
+    public static void saveAddress(Address address) throws SQLException, ClassNotFoundException {
+        Connection connection = ConnectionProvider.createConnection();
+        String addressQuarry = "insert  into  address(country, district, division, sub_district)   values('" + address.getCountry() + "','" + address.getDivision() + "','" + address.getDistrict() + "','" + address.getSubDistrict() + "');";
+        PreparedStatement preparedStatement = connection.prepareStatement(addressQuarry);
+        boolean a = preparedStatement.execute();
+        connection.close();
 
-}
+    }
 
     public static boolean updateAddress(int id, Address address) {
         Connection connection = null;
