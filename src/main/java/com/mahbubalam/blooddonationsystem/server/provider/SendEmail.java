@@ -186,6 +186,5 @@ public class SendEmail {
         }catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }

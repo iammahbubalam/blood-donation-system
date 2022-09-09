@@ -3,6 +3,7 @@ package com.mahbubalam.blooddonationsystem;
 import com.mahbubalam.blooddonationsystem.server.controller.AuthenticationController;
 import com.mahbubalam.blooddonationsystem.server.controller.DonationController;
 import com.mahbubalam.blooddonationsystem.server.controller.PersonController;
+import com.mahbubalam.blooddonationsystem.server.entity.BloodGroup;
 import com.mahbubalam.blooddonationsystem.server.entity.Donation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,7 +35,7 @@ public class LoginController {
     @FXML
     protected void onLoginButtonClick(ActionEvent event) throws SQLException, ClassNotFoundException {
         PersonController.readyToDonateEvent("balsal",8);
-        DonationController.saveDonation(new Donation("dmc",  new Date(new java.util.Date().getTime()),7,8));
+        DonationController.saveDonation(new Donation("dmc", new Date(new java.util.Date().getTime()),7,8, BloodGroup.A_POSITIVE));
         if (!inputFieldValidate()) {
             return;
         }
