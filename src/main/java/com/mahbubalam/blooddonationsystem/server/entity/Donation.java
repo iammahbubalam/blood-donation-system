@@ -6,18 +6,26 @@ import java.sql.Date;
 public class Donation {
 
     private int id;
-
     private String hospitalName;
     private Date donationDate;
     private int donatedPersonId;
     private int receivedPersonId;
+    private BloodGroup bloodGroup;
 
-    public Donation(String hospitalName, Date donationDate, int donatedPersonId, int receivedPersonId) {
+    public Donation(String hospitalName, Date donationDate, int donatedPersonId, int receivedPersonId, BloodGroup bloodGroup) {
         this.hospitalName = hospitalName;
-
         this.donationDate = donationDate;
         this.donatedPersonId = donatedPersonId;
         this.receivedPersonId = receivedPersonId;
+        this.bloodGroup = bloodGroup;
+    }
+
+    public BloodGroup getBloodGroup() {
+        return bloodGroup;
+    }
+
+    public void setBloodGroup(BloodGroup bloodGroup) {
+        this.bloodGroup = bloodGroup;
     }
 
     public Donation() {
@@ -65,6 +73,9 @@ public class Donation {
                 "id=" + id +
                 ", hospitalName='" + hospitalName + '\'' +
                 ", donationDate=" + donationDate +
+                ", donatedPersonId=" + donatedPersonId +
+                ", receivedPersonId=" + receivedPersonId +
+                ", bloodGroup=" + bloodGroup +
                 '}';
     }
 }
