@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.MainMenuController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.MainMenuController">
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="230.0" style="-fx-background-color: #9F1111;">
+      <AnchorPane prefHeight="500.0" prefWidth="0.0" style="-fx-background-color: #9F1111;">
          <children>
             <VBox layoutY="212.0" prefHeight="240.0" prefWidth="230.0">
                <children>
@@ -35,7 +35,7 @@
             <Button fx:id="logOutButton" layoutX="84.0" layoutY="461.0" mnemonicParsing="false" onAction="#onClickLogOutButton" text="Log Out!" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="230.0" prefHeight="500.0" prefWidth="570.0">
+      <AnchorPane layoutX="230.0" prefHeight="500.0" prefWidth="0.0">
          <children>
             <ComboBox fx:id="bloodGroup" layoutX="395.0" layoutY="126.0" prefWidth="150.0" />
             <ComboBox fx:id="gender" layoutX="395.0" layoutY="176.0" prefWidth="150.0" />

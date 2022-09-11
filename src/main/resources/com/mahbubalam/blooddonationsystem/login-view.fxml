@@ -1,31 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="900.0" style="-fx-background-color: #6A0000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.LoginController">
    <children>
-      <Label fx:id="loginTitle" layoutX="140.0" layoutY="123.0" text="BloodBank">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <TextField fx:id="emailOrPhoneInputField" layoutX="150.0" layoutY="235.0" prefHeight="25.0" prefWidth="197.0" />
-      <Label layoutX="57.0" layoutY="239.0" text="Email/Mobile:" />
-      <Label layoutX="57.0" layoutY="279.0" text="Password:" />
-      <PasswordField fx:id="passwordInputField" layoutX="150.0" layoutY="275.0" prefHeight="25.0" prefWidth="197.0" />
-      <Button fx:id="loginButton" layoutX="182.0" layoutY="331.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="25.0" prefWidth="98.0" text="Log In" />
-      <Label layoutX="133.0" layoutY="506.0" text="Doesn't have an account?" />
-      <Button fx:id="registerButton" layoutX="171.0" layoutY="534.0" mnemonicParsing="false" onAction="#onRegisterButtonClick" text="Register" />
-      <Text fx:id="showWarning" fill="#801313" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="400.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
+      <AnchorPane prefHeight="155.0" prefWidth="900.0">
+         <children>
+            <Label layoutX="333.0" layoutY="47.0" text="Blood Source" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="391.0" layoutY="97.0" text="Every Drop Counts" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Regular" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Pane layoutY="155.0" prefHeight="615.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <TextField fx:id="emailOrPhoneInputField" layoutX="379.0" layoutY="203.0" prefHeight="35.0" prefWidth="260.0" />
+            <Label layoutX="230.0" layoutY="208.0" text="Username/Mobile:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="passwordInputField" layoutX="379.0" layoutY="273.0" prefHeight="35.0" prefWidth="260.0" />
+            <Label layoutX="230.0" layoutY="278.0" text="Password:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="400.0" layoutY="348.0" onAction="#onLoginButtonClick" prefHeight="40.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #A60000;" text="Login" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="388.0" layoutY="542.0" text="Don't have an account?" />
+            <JFXButton layoutX="398.0" layoutY="558.0" onAction="#onRegisterButtonClick" text="Register with us!" textFill="#a60000" />
+            <Separator layoutY="529.0" prefWidth="900.0" />
+            <Text fx:id="showWarning" fill="#d33737" layoutX="350.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
