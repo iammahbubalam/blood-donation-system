@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="900.0" style="-fx-background-color: #B50000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.RegisterMenuOneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="900.0" style="-fx-background-color: #B50000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.RegisterMenuController">
    <children>
       <AnchorPane prefHeight="155.0" prefWidth="900.0">
          <children>
@@ -135,13 +135,13 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Text fx:id="firstNameWarning" fill="#d33737" layoutX="119.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+            <Text fx:id="firstNameWarning" fill="#d33737" layoutX="107.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
             <Text fx:id="lastNameWarning" fill="#d33737" layoutX="673.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
             <Text fx:id="genderWarning" fill="#d33737" layoutX="25.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
             <Text fx:id="bloodGroupWarning" fill="#d33737" layoutX="289.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
             <Text fx:id="dateOfBirthWarning" fill="#d33737" layoutX="674.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
-            <Separator layoutX="106.0" layoutY="9.0" opacity="0.5" prefHeight="10.0" prefWidth="700.0" />
-            <Separator layoutX="106.0" layoutY="519.0" opacity="0.5" prefHeight="10.0" prefWidth="700.0" />
+            <Separator layoutY="9.0" opacity="0.5" prefHeight="10.0" prefWidth="900.0" />
+            <Separator layoutY="519.0" opacity="0.5" prefHeight="10.0" prefWidth="900.0" />
          </children>
       </Pane>
    </children>

@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegisterMenuOneController implements Initializable {
+public class RegisterMenuController implements Initializable {
     private final Person p = Person.getInstanceOfModelPerson();
     public Text firstNameWarning;
     public Text lastNameWarning;
