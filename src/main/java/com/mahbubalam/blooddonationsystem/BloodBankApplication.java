@@ -20,7 +20,6 @@ public class BloodBankApplication extends Application {
         primaryStage.setTitle("Blood Bank");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
     }
 }
 

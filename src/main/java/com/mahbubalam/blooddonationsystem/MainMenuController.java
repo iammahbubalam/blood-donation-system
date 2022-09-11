@@ -1,5 +1,6 @@
 package com.mahbubalam.blooddonationsystem;
 
+import com.jfoenix.controls.JFXButton;
 import com.mahbubalam.blooddonationsystem.server.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -22,8 +24,10 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
-    public Button userProfileButton;
-    public Button logOutButton;
+    public JFXButton userProfileButton;
+    public JFXButton logOutButton;
+    public JFXButton requestBloodButton;
+    public JFXButton donateBloodButton;
     User user = User.getInstance();
     @FXML
     private Label bloodGroup;
@@ -61,7 +65,9 @@ public class MainMenuController implements Initializable {
     @FXML
     protected void onClickEditProfileButton(ActionEvent event) {
         try {
-//            root = FXMLLoader.load(getClass().getResource("editprofile-view.fxml"));
+            //AnchorPane view = FXMLLoader.load(getClass().getResource("editprofile-view.fxml"));
+
+//            root = FXMLLoader.load(getClass().getResource(""));
 //            mainMenuStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 //            mainMenuStage.setTitle("Blood Bank");
 //            mainMenuStage.setScene(new Scene(root));
@@ -87,6 +93,32 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML
+    public void onClickRequestBloodButton(ActionEvent event) {
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("requestblood-view.fxml")));
+            mainMenuStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            mainMenuStage.setTitle("BloodBank");
+            mainMenuStage.setScene(new Scene(root));
+            mainMenuStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void onClickDonateBloodButton(ActionEvent event) {
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("donateblood-view.fxml")));
+            mainMenuStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            mainMenuStage.setTitle("BloodBank");
+            mainMenuStage.setScene(new Scene(root));
+            mainMenuStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void onClickLogOutButton(ActionEvent event) {
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login-view.fxml")));
@@ -98,4 +130,6 @@ public class MainMenuController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
 }
