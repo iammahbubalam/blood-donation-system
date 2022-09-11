@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="900.0" style="-fx-background-color: #B50000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.RegisterMenuOneController">
+   <children>
+      <AnchorPane prefHeight="155.0" prefWidth="900.0">
+         <children>
+            <Label layoutX="300.0" layoutY="57.0" text="User Registration" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Pane layoutY="155.0" prefHeight="615.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <TextField fx:id="firstNameTextField" layoutX="105.0" layoutY="35.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="lastNameTextField" layoutX="673.0" layoutY="35.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="emailTextField" layoutX="105.0" layoutY="235.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="mobileNumTextField" layoutX="105.0" layoutY="335.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="nidNumTextField" layoutX="673.0" layoutY="335.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="25.0" layoutY="45.0" text="First Name:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="573.0" layoutY="45.0" text="Last Name:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="245.0" text="Email:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="345.0" text="Mobile:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="573.0" layoutY="345.0" text="NID Number:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="573.0" layoutY="445.0" text="Thana:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="bloodGroupComboBox" editable="true" layoutX="385.0" layoutY="135.0" onAction="#onClickBloodGroupComboBox" prefHeight="40.0" prefWidth="100.0" />
+            <ComboBox fx:id="genderComboBox" editable="true" layoutX="105.0" layoutY="135.0" onAction="#onClickGenderComboBox" prefHeight="40.0" prefWidth="100.0" />
+            <PasswordField fx:id="passwordField" layoutX="673.0" layoutY="235.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </PasswordField>
+            <DatePicker fx:id="dateOfBirthDatePicker" layoutX="673.0" layoutY="135.0" onAction="#onClickDateOfBirthDatePicker" prefHeight="40.0" prefWidth="180.0" />
+            <TextField fx:id="thanaTextField" layoutX="673.0" layoutY="435.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <ComboBox fx:id="divisionComboBox" editable="true" layoutX="105.0" layoutY="435.0" prefHeight="40.0" prefWidth="150.0" />
+            <ComboBox fx:id="districtComboBox" editable="true" layoutX="371.0" layoutY="435.0" prefHeight="40.0" prefWidth="150.0" />
+            <Label layoutX="25.0" layoutY="145.0" text="Gender:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="289.0" layoutY="145.0" text="Blood Group:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="573.0" layoutY="145.0" text="Date of Birth:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="573.0" layoutY="245.0" text="Password:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="445.0" text="District:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="310.0" layoutY="445.0" text="Division:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="registerButton" layoutX="500.0" layoutY="552.0" mnemonicParsing="false" onAction="#onClickRegisterButton" style="-fx-background-color: #B50000;" text="Register" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="cancelButton" layoutX="300.0" layoutY="552.0" mnemonicParsing="false" onAction="#onClickCancelButton" style="-fx-background-color: #B50000;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Text fx:id="firstNameWarning" fill="#d33737" layoutX="119.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+            <Text fx:id="lastNameWarning" fill="#d33737" layoutX="673.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+            <Text fx:id="genderWarning" fill="#d33737" layoutX="25.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+            <Text fx:id="bloodGroupWarning" fill="#d33737" layoutX="289.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+            <Text fx:id="dateOfBirthWarning" fill="#d33737" layoutX="674.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+            <Separator layoutX="106.0" layoutY="9.0" opacity="0.5" prefHeight="10.0" prefWidth="700.0" />
+            <Separator layoutX="106.0" layoutY="519.0" opacity="0.5" prefHeight="10.0" prefWidth="700.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

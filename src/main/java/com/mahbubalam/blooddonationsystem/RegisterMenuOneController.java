@@ -48,7 +48,7 @@ public class RegisterMenuOneController implements Initializable {
     @FXML
     private DatePicker dateOfBirthDatePicker;
     @FXML
-    private Button nextButton;
+    private Button cancelButton;
     @FXML
     private Parent root;
     @FXML
@@ -95,11 +95,11 @@ public class RegisterMenuOneController implements Initializable {
     }
 
     @FXML
-    protected void onClickNextButton(ActionEvent event){
+    protected void onClickCancelButton(ActionEvent event){
         try {
             if (fieldCheckOne()){
                 takingInputFromOne();
-                nextPage("registerview-two.fxml", event);
+                nextPage("login-view.fxml", event);
             }
 
         } catch (Exception e){
