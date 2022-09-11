@@ -4,42 +4,59 @@ import com.mahbubalam.blooddonationsystem.server.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class MainMenuController {
+public class MainMenuController implements Initializable {
     public Button userProfileButton;
     public Button logOutButton;
     User user = User.getInstance();
     @FXML
-    private ComboBox bloodGroup;
+    private Label bloodGroup;
     @FXML
-    private ComboBox gender;
+    private Label gender;
     @FXML
-    private Button editProfileButton;
+    private Label editProfileButton;
+    /*@FXML
+    private Label firstName;
     @FXML
-    private TextField firstName;
+    private Label lastName;*/
     @FXML
-    private TextField lastName;
+    private Label name;
     @FXML
-    private TextField nidNum;
+    private Label nidNum;
     @FXML
-    private TextField mobileNum;
+    private Label mobileNum;
     @FXML
-    private TextField email;
+    private Label email;
     @FXML
-    private TextField address;
+    private Label address;
     @FXML
     private Parent root;
     @FXML
     private Stage mainMenuStage;
+    @FXML
+    private Circle circle;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Image img = new Image("C:\\Users\\subhe\\Documents\\Important Documents\\Programming\\Java Programming\\JavaPracticeProject5\\blood-donation-system\\src\\Screenshot 2022-02-11 004828.png");
+        circle.setFill(new ImagePattern(img));
+    }
 
     @FXML
     protected void onClickEditProfileButton(ActionEvent event) {
@@ -49,7 +66,7 @@ public class MainMenuController {
 //            mainMenuStage.setTitle("Blood Bank");
 //            mainMenuStage.setScene(new Scene(root));
 //            mainMenuStage.show();
-            firstName.setText(user.getName());
+            name.setText(user.getName());
 
         } catch (Exception e) {
             e.printStackTrace();

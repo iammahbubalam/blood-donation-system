@@ -1,68 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.MainMenuController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #A60000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.MainMenuController">
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="0.0" style="-fx-background-color: #9F1111;">
+      <AnchorPane layoutY="200.0" prefHeight="500.0" prefWidth="200.0" style="-fx-background-color: #A60000;">
          <children>
-            <VBox layoutY="212.0" prefHeight="240.0" prefWidth="230.0">
-               <children>
-                  <Button fx:id="userProfileButton" mnemonicParsing="false" onAction="#onClickUserProfileButton" prefHeight="42.0" prefWidth="230.0" text="Profile">
-                     <VBox.margin>
-                        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="230.0" text="Request Blood">
-                     <VBox.margin>
-                        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="238.0" text="Donate Blood">
-                     <VBox.margin>
-                        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-            <Button fx:id="logOutButton" layoutX="84.0" layoutY="461.0" mnemonicParsing="false" onAction="#onClickLogOutButton" text="Log Out!" />
+            <JFXButton fx:id="userProfileButton" alignment="TOP_CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="60.0" onAction="#onClickUserProfileButton" prefHeight="35.0" prefWidth="180.0" ripplerFill="#a60000" style="-fx-background-color: #FFFFFF;" text="Profile">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="requestBloodButton" alignment="TOP_CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="140.0" prefHeight="35.0" prefWidth="180.0" ripplerFill="#a60000" style="-fx-background-color: #FFFFFF;" text="Request Blood">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="donateBloodButton" alignment="TOP_CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="220.0" prefHeight="35.0" prefWidth="180.0" ripplerFill="#a60000" style="-fx-background-color: #FFFFFF;" text="Donate Blood">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="logOutButton" alignment="TOP_CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="55.0" layoutY="421.0" onAction="#onClickLogOutButton" prefHeight="35.0" prefWidth="90.0" ripplerFill="#a60000" style="-fx-background-color: #FFFFFF;" text="Log Out!">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="230.0" prefHeight="500.0" prefWidth="0.0">
+      <AnchorPane layoutX="200.0" layoutY="30.0" prefHeight="670.0" prefWidth="700.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <ComboBox fx:id="bloodGroup" layoutX="395.0" layoutY="126.0" prefWidth="150.0" />
-            <ComboBox fx:id="gender" layoutX="395.0" layoutY="176.0" prefWidth="150.0" />
-            <Label layoutX="312.0" layoutY="181.0" text="Gender:" />
-            <Label layoutX="312.0" layoutY="130.0" text="Blood Group:" />
-            <Button fx:id="editProfileButton" layoutX="461.0" layoutY="427.0" mnemonicParsing="false" onAction="#onClickEditProfileButton" text="Edit Profile">
+            <Label layoutX="360.0" layoutY="230.0" text="Gender:">
                <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Label layoutX="236.0" layoutY="55.0" text="User Profile">
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutX="20.0" layoutY="275.0" text="Blood Group:">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutX="20.0" layoutY="230.0" text="Name:">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutX="20.0" layoutY="390.0" text="NID:">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutX="360.0" layoutY="345.0" text="Mobile:">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutX="20.0" layoutY="345.0" text="Email:">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutX="20.0" layoutY="435.0" text="Address:">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="name" layoutX="100.0" layoutY="230.0" text="Name">
+               <font>
+                  <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="firstName" editable="false" layoutX="87.0" layoutY="126.0" />
-            <TextField fx:id="lastName" editable="false" layoutX="87.0" layoutY="177.0" />
-            <TextField fx:id="nidNum" editable="false" layoutX="87.0" layoutY="229.0" />
-            <TextField fx:id="mobileNum" editable="false" layoutX="87.0" layoutY="277.0" />
-            <TextField fx:id="email" editable="false" layoutX="87.0" layoutY="329.0" />
-            <Label layoutX="18.0" layoutY="130.0" text="First Name:" />
-            <Label layoutX="18.0" layoutY="180.0" text="Last Name:" />
-            <Label layoutX="18.0" layoutY="233.0" text="NID:" />
-            <Label layoutX="18.0" layoutY="281.0" text="Mobile:" />
-            <Label layoutX="18.0" layoutY="333.0" text="Email:" />
-            <TextField fx:id="address" editable="false" layoutX="87.0" layoutY="383.0" prefHeight="25.0" prefWidth="458.0" />
-            <Label layoutX="18.0" layoutY="387.0" text="Address:" />
+            <Label fx:id="bloodGroup" layoutX="150.0" layoutY="275.0" text="Blood Group">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="562.0" layoutY="600.0" prefHeight="27.0" prefWidth="102.0" ripplerFill="#dd5454" style="-fx-background-color: #A60000;" text="Edit Profile" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="360.0" layoutY="275.0" text="Date of Birth:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="gender" layoutX="440.0" layoutY="230.0" text="Gender">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateOfBirth" layoutX="485.0" layoutY="275.0" text="Date of Birth">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="mobileNum" layoutX="440.0" layoutY="345.0" text="Mobile">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="email" layoutX="100.0" layoutY="345.0" text="Email">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="nidNum" layoutX="100.0" layoutY="390.0" text="NID Number">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="address" layoutX="100.0" layoutY="435.0" text="Address">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Separator layoutY="325.0" prefWidth="700.0" />
+            <Separator layoutY="485.0" prefWidth="700.0" />
+            <Label layoutX="20.0" layoutY="505.0" text="Blood Donated:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="360.0" layoutY="505.0" text="Blood Received:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="160.0" layoutY="505.0" text="Blood Donated">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="500.0" layoutY="505.0" text="Blood Received">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Circle fx:id="circle" fill="DODGERBLUE" layoutX="350.0" layoutY="115.0" radius="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
          </children>
       </AnchorPane>
    </children>
