@@ -1,6 +1,6 @@
 package com.mahbubalam.blooddonationsystem.server.controller;
 
-import com.mahbubalam.blooddonationsystem.server.model.User;
+import com.mahbubalam.blooddonationsystem.singletron.User;
 import com.mahbubalam.blooddonationsystem.server.provider.ConnectionProvider;
 
 import java.sql.Connection;

@@ -1,42 +1,25 @@
 package com.mahbubalam.blooddonationsystem;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.PasswordField;
 
-public class RequestBloodController extends MainMenuController{
-    @FXML
-    private ComboBox divisionComboBox;
-    @FXML
-    private ComboBox districtComboBox;
-    @FXML
-    private ComboBox bloodGroupComboBox;
-    @FXML
-    private ComboBox genderComboBox;
+public class RequestBloodController {
 
-    @Override
-    public void onClickUserProfileButton(ActionEvent event) {
-        super.onClickUserProfileButton(event);
-    }
 
-    @Override
-    public void onClickRequestBloodButton(ActionEvent event) {
-        super.onClickRequestBloodButton(event);
-    }
+    public PasswordField OldPasswordField;
+    public PasswordField confirmPasswordField;
+    public PasswordField newPasswordField;
+    public JFXButton saveButton;
 
-    @Override
-    public void onClickDonateBloodButton(ActionEvent event) {
-        super.onClickDonateBloodButton(event);
-    }
-
-    @Override
-    public void onClickLogOutButton(ActionEvent event) {
-        super.onClickLogOutButton(event);
+    public void onClickLoadButton(ActionEvent event) {
     }
 
     public void onClickBloodGroupComboBox(ActionEvent event) {
     }
 
-    public void onClickGenderComboBox(ActionEvent event) {
+    public void onClickChangePassword(ActionEvent event) {
     }
 }

@@ -32,32 +32,36 @@ public class LoginController {
 
     @FXML
     protected void onLoginButtonClick(ActionEvent event){
-        if (!inputFieldValidate()){
-            return;
-        }
-        String emailOrPhone = emailOrPhoneInputField.getText();
-        String password = passwordInputField.getText();
-        boolean isAuthenticate;
-        if (emailOrPhone.contains(".com")){
-            try {
-                isAuthenticate= AuthenticationController.authenticateWithEmail(emailOrPhone,password);
-            } catch (ClassNotFoundException | SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }else {
-            try {
-                isAuthenticate=AuthenticationController.authenticateWithPhoneNo(emailOrPhone,password);
-            } catch (ClassNotFoundException | SQLException e) {
-                throw new RuntimeException(e);
-            }
-
-        }
-        if (!isAuthenticate){
-
-            showWarning.setText("invalid Email or password");
-        }else {
-            changeStage(event);
-        }
+        changeStage(event);
+//        if (!inputFieldValidate()){
+//            return;
+//        }
+//        String emailOrPhone = emailOrPhoneInputField.getText();
+//        String password = passwordInputField.getText();
+//        boolean isAuthenticate;
+//        if (emailOrPhone.contains(".com")){
+//            try {
+//                isAuthenticate= AuthenticationController.authenticateWithEmail(emailOrPhone,password);
+//            } catch (ClassNotFoundException | SQLException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }else {
+//            try {
+//                isAuthenticate=AuthenticationController.authenticateWithPhoneNo(emailOrPhone,password);
+//            } catch (ClassNotFoundException | SQLException e) {
+//                throw new RuntimeException(e);
+//            }
+//
+//        }
+//        if (!isAuthenticate){
+//            System.out.println("not");
+//
+//            showWarning.setText("invalid Email or password");
+//        }else {
+//            System.out.println("yes");
+//
+//            changeStage(event);
+//        }
     }
 
     @FXML
@@ -75,7 +79,7 @@ public class LoginController {
 
     private void changeStage(ActionEvent event){
         try{
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainmenu-view.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main.fxml")));
             loginStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             loginStage.setTitle("Blood Bank");
             loginStage.setScene(new Scene(root));

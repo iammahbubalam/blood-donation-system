@@ -1,25 +1,31 @@
-package com.mahbubalam.blooddonationsystem.server.model;
+package com.mahbubalam.blooddonationsystem.singletron;
 
+
+import com.mahbubalam.blooddonationsystem.util.NetworkUtility;
 
 public class User {
-    public static final User instanceOfUser = new User();
+    public static final User instance = new User();
     private int userId;
     private String name;
     private String userEmail;
     private String userPhoneNo;
+    private NetworkUtility networkUtility;
 
-    public User(int userId, String name, String userEmail, String userPhoneNo) {
-        this.userId = userId;
-        this.name = name;
-        this.userEmail = userEmail;
-        this.userPhoneNo = userPhoneNo;
+    public NetworkUtility getNetworkUtility() {
+        return networkUtility;
     }
 
-    public User() {
+    public void setNetworkUtility(NetworkUtility networkUtility) {
+        this.networkUtility = networkUtility;
+    }
+
+
+
+    private User() {
     }
 
     public static User getInstance() {
-        return instanceOfUser;
+        return instance;
     }
 
     public int getUserId() {

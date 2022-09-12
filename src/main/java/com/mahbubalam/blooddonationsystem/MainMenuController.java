@@ -1,7 +1,7 @@
 package com.mahbubalam.blooddonationsystem;
 
 import com.jfoenix.controls.JFXButton;
-import com.mahbubalam.blooddonationsystem.server.model.User;
+import com.mahbubalam.blooddonationsystem.singletron.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,16 +9,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.ImagePattern;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -28,6 +25,8 @@ public class MainMenuController implements Initializable {
     public JFXButton logOutButton;
     public JFXButton requestBloodButton;
     public JFXButton donateBloodButton;
+    public JFXButton changePasswordButton;
+    public BorderPane borderPane;
     User user = User.getInstance();
     @FXML
     private Label bloodGroup;
@@ -56,10 +55,11 @@ public class MainMenuController implements Initializable {
     @FXML
     private Circle circle;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Image img = new Image("C:\\Users\\subhe\\Documents\\Important Documents\\Programming\\Java Programming\\JavaPracticeProject5\\blood-donation-system\\src\\Screenshot 2022-02-11 004828.png");
-        circle.setFill(new ImagePattern(img));
+//        Image img = new Image("bal.png");
+//        circle.setFill(new ImagePattern(img));
     }
 
     @FXML
@@ -82,11 +82,8 @@ public class MainMenuController implements Initializable {
     @FXML
     public void onClickUserProfileButton(ActionEvent event) {
         try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainmenu-view.fxml")));
-            mainMenuStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            mainMenuStage.setTitle("BloodBank");
-            mainMenuStage.setScene(new Scene(root));
-            mainMenuStage.show();
+            AnchorPane anchorPane = FxmlLoader.getAnchorPane("user-profile-view.fxml");
+            borderPane.setCenter(anchorPane);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -95,11 +92,8 @@ public class MainMenuController implements Initializable {
     @FXML
     public void onClickRequestBloodButton(ActionEvent event) {
         try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("requestblood-view.fxml")));
-            mainMenuStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            mainMenuStage.setTitle("BloodBank");
-            mainMenuStage.setScene(new Scene(root));
-            mainMenuStage.show();
+            AnchorPane anchorPane = FxmlLoader.getAnchorPane("request-blood-view.fxml");
+            borderPane.setCenter(anchorPane);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -108,11 +102,8 @@ public class MainMenuController implements Initializable {
     @FXML
     public void onClickDonateBloodButton(ActionEvent event) {
         try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("donateblood-view.fxml")));
-            mainMenuStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            mainMenuStage.setTitle("BloodBank");
-            mainMenuStage.setScene(new Scene(root));
-            mainMenuStage.show();
+            AnchorPane anchorPane = FxmlLoader.getAnchorPane("donate-blood-view.fxml");
+            borderPane.setCenter(anchorPane);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -132,4 +123,8 @@ public class MainMenuController implements Initializable {
     }
 
 
+    public void onClickUserChangePasswordButton(ActionEvent event) throws IOException {
+        AnchorPane anchorPane = FxmlLoader.getAnchorPane("change-password.fxml");
+        borderPane.setCenter(anchorPane);
+    }
 }

@@ -71,17 +71,23 @@ public class RegisterMenuController implements Initializable {
     private ComboBox<String> districtComboBox = new ComboBox<>();
     private final String[] districtList = {"Dhaka","Faridpur","Gazipur","Gopalganj","Jamalpur","Kishoreganj","Madaripur",
             "Manikganj","Munshiganj","Mymensingh","Narayanganj","Narsingdi","Netrokona","Rajbari","Shariatpur","Sherpur","Tangail","Bogra","Joypurhat","Naogaon","Natore","Nawabganj","Pabna","Rajshahi","Sirajgonj","Dinajpur","Gaibandha","Kurigram","Lalmonirhat","Nilphamari","Panchagarh","Rangpur","Thakurgaon","Barguna","Barisal","Bhola","Jhalokati","Patuakhali","Pirojpur","Bandarban","Brahmanbaria","Chandpur","Chittagong","Comilla","Cox''s Bazar","Feni","Khagrachari","Lakshmipur","Noakhali","Rangamati","Habiganj","Maulvibazar","Sunamganj","Sylhet","Bagerhat","Chuadanga","Jessore","Jhenaidah","Khulna","Kushtia","Magura","Meherpur","Narail","Satkhira"};
+//    private final String[] districtListOfBarisal = {  "Barguna", "Barisal", "Bhola", "Jhalokati", "Patuakhali", "Pirojpur"};
+//    private final String[] districtListOfDhaka = {   "Dhaka", "Faridpur",  "Gazipur", "Gopalganj",   "Jamalpur", "Kishoreganj", "Madaripur",  "Manikganj",   "Munshiganj",   "Narayanganj", "Narsingdi", "Rajbari", "Shariatpur",  "Tangail"};
+//    private final String[] districtListOfChattogram = {  "Bandarban", "Brahmanbaria", "Chandpur",  "Chittagong", "Comilla", "Cox's Bazar",  "Feni", "Khagrachhari", "Lakshmipur",  "Noakhali",  "Rangamati"};
+//    private final String[] districtListOfRajshahi = {    "Bogra","Joypurhat","Naogaon","Natore",  "Nawabganj", "Pabna", "Rajshahi", "Sirajganj"};
+//    private final String[] districtListOfSylhet = {    "Habiganj", "Maulvi Bazar",  "Sunamganj","Sylhet"};
+//    private final String[] districtListOfKhulna = {   "Bagerhat", "Chuadanga",   "Jessore",  "Jhenaidaha",  "Khulna",  "Kushtia",   "Magura",    "Meherpur",    "Narail", "Satkhira"};
+//    private final String[] districtListOfRangpur = {    "Dinajpur", "Gaibandha", "Kurigram", "Lalmonirhat", "Nilphamari", "Panchagarh", "Rangpur",  "Thakurgaon"};
+//    private final String[] districtListOfMymensingh = {   "Jamalpur", "Mymensingh" , "Netrokona" , "Sherpur"};
     @FXML
     private Button registerButton;
-
-
     private String password;
-
     private String division;
     private String district;
     private String thana;
     private String nid;
     final String  emailRegex = "^(.+)@(.+)$";
+    final String phoneRegex = "^01[13-9]\\d{8}$";
     Pattern pattern;
     Matcher matcher;
 
@@ -96,15 +102,15 @@ public class RegisterMenuController implements Initializable {
 
     @FXML
     protected void onClickCancelButton(ActionEvent event){
-        try {
-            if (fieldCheckOne()){
-                takingInputFromOne();
-                nextPage("login-view.fxml", event);
-            }
-
-        } catch (Exception e){
-            e.printStackTrace();
-        }
+//        try {
+//            if (fieldCheck()){
+//                takingInput();
+//                nextPage("login-view.fxml", event);
+//            }
+//
+//        } catch (Exception e){
+//            e.printStackTrace();
+//        }
     }
 
     private void nextPage(String name, ActionEvent event) throws IOException {
@@ -114,7 +120,7 @@ public class RegisterMenuController implements Initializable {
         registerStage.show();
     }
 
-    private boolean fieldCheckOne() {
+    private boolean fieldCheck() {
         if (firstNameTextField.getText().isBlank()){
             firstNameWarning.setText("first name can't be empty");
             return false;
@@ -136,19 +142,16 @@ public class RegisterMenuController implements Initializable {
             dateOfBirthWarning.setText("birth date can't be empty");
             return false;
         }
-        return true;
-    }
-    private boolean fieldCheckTwo() {
         if (emailTextField.getText().isBlank()){
             emailWarning.setText("email required");
             return false;
         }
         if (mobileNumTextField.getText().isBlank()){
-            lastNameWarning.setText("mobile no required");
+            mobileWarning.setText("mobile no required");
             return false;
         }
         if (passwordField.getText().isEmpty()){
-            genderWarning.setText("password required");
+            passwordWarning.setText("password required");
             return false;
         }
         if (divisionComboBox.getValue()==null){
@@ -161,18 +164,22 @@ public class RegisterMenuController implements Initializable {
             addressWarning.setText("thana required");
             return false;
         }
-//        if (!checkPasswordIsStrong())return false;
-        if (!checkIsValidEmail())return false;
+       if (!checkIsValidEmail()) {
+        emailWarning.setText("invalid email");
+        return false;
+       }
+        if (!checkIsValidPhone()) {
+            mobileNumTextField.setText("invalid phone no");
+            return false;
+        }
         return true;
     }
 
-    private void takingInputFromOne() {
+
+    private void takingInput(){
         p.setDateOfBirth(String.valueOf(dateOfBirthDatePicker.getValue()));
         p.setFirstName(firstNameTextField.getText());
         p.setLastName(lastNameTextField.getText());
-
-    }
-    private void takingInputFromTwo(){
         p.setPhoneNumber(mobileNumTextField.getText());
         p.setEmail(emailTextField.getText());
         password = passwordField.getText();
@@ -185,8 +192,8 @@ public class RegisterMenuController implements Initializable {
     @FXML
     protected void onClickRegisterButton(ActionEvent event){
 
-            if (fieldCheckTwo()){
-                takingInputFromTwo();
+            if (fieldCheck()){
+                takingInput();
 
                 try {
                     AddressController.saveAddress(new Address(division,district,thana));
@@ -282,7 +289,10 @@ firstNameWarning.setText("");
     }
 
     public void onKeyReleaseMobileTextField(KeyEvent keyEvent) {
-        mobileWarning.setText("");
+        if (!checkIsValidPhone()){
+            mobileWarning.setText("invalid Phone No");
+        }else mobileWarning.setText("");
+
     }
 
 
@@ -290,9 +300,13 @@ firstNameWarning.setText("");
     private boolean checkIsValidEmail(){
         return Pattern.compile(emailRegex).matcher(emailTextField.getText()).matches();
     }
+    private boolean checkIsValidPhone(){
+        return Pattern.compile(phoneRegex).matcher(mobileNumTextField.getText()).matches();
+    }
 
     public void onClickDivision(ActionEvent event) {
         addressWarning.setText("");
+
     }
 
     public void onClickDistrict(ActionEvent event) {

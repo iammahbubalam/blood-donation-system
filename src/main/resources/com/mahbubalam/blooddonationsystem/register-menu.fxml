@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="900.0" style="-fx-background-color: #6A0000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.RegisterMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="900.0" style="-fx-background-color: #6A0000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.RegisterMenuController">
    <children>
       <AnchorPane prefHeight="155.0" prefWidth="900.0">
          <children>
@@ -25,22 +25,22 @@
       </AnchorPane>
       <Pane layoutY="155.0" prefHeight="615.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <TextField fx:id="firstNameTextField" layoutX="105.0" layoutY="35.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
+            <TextField fx:id="firstNameTextField" layoutX="105.0" layoutY="35.0" onKeyReleased="#onKeyReleasedFirstNameTextField" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="lastNameTextField" layoutX="673.0" layoutY="35.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
+            <TextField fx:id="lastNameTextField" layoutX="673.0" layoutY="35.0" onKeyReleased="#onKeyReleasedLastNameTextField" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="emailTextField" layoutX="105.0" layoutY="235.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
+            <TextField fx:id="emailTextField" layoutX="105.0" layoutY="235.0" onKeyReleased="#onKeyReleaseEmailInputValidation" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="mobileNumTextField" layoutX="105.0" layoutY="335.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
+            <TextField fx:id="mobileNumTextField" layoutX="105.0" layoutY="335.0" onKeyReleased="#onKeyReleaseMobileTextField" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
                <font>
                   <Font size="18.0" />
                </font>
@@ -88,13 +88,13 @@
                </font>
             </PasswordField>
             <DatePicker fx:id="dateOfBirthDatePicker" layoutX="673.0" layoutY="135.0" onAction="#onClickDateOfBirthDatePicker" prefHeight="40.0" prefWidth="180.0" />
-            <TextField fx:id="thanaTextField" layoutX="673.0" layoutY="435.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
+            <TextField fx:id="thanaTextField" layoutX="673.0" layoutY="435.0" onAction="#onClickThana" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="divisionComboBox" editable="true" layoutX="105.0" layoutY="435.0" prefHeight="40.0" prefWidth="150.0" />
-            <ComboBox fx:id="districtComboBox" editable="true" layoutX="371.0" layoutY="435.0" prefHeight="40.0" prefWidth="150.0" />
+            <ComboBox fx:id="divisionComboBox" editable="true" layoutX="105.0" layoutY="435.0" onAction="#onClickDivision" prefHeight="40.0" prefWidth="150.0" />
+            <ComboBox fx:id="districtComboBox" editable="true" layoutX="371.0" layoutY="435.0" onAction="#onClickDistrict" prefHeight="40.0" prefWidth="150.0" />
             <Label layoutX="25.0" layoutY="145.0" text="Gender:">
                <font>
                   <Font size="14.0" />
@@ -115,21 +115,21 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="36.0" layoutY="445.0" text="District:">
+            <Label layoutX="36.0" layoutY="445.0" text="Division:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="310.0" layoutY="445.0" text="Division:">
+            <Label layoutX="310.0" layoutY="445.0" text="District:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <Text fx:id="firstNameWarning" fill="#d33737" layoutX="107.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
             <Text fx:id="lastNameWarning" fill="#d33737" layoutX="673.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
-            <Text fx:id="genderWarning" fill="#d33737" layoutX="25.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
-            <Text fx:id="bloodGroupWarning" fill="#d33737" layoutX="289.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
-            <Text fx:id="dateOfBirthWarning" fill="#d33737" layoutX="674.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+            <Text fx:id="genderWarning" fill="#d33737" layoutX="55.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+            <Text fx:id="bloodGroupWarning" fill="#d33737" layoutX="285.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+            <Text fx:id="dateOfBirthWarning" fill="#d33737" layoutX="663.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
             <Separator layoutY="9.0" opacity="0.5" prefHeight="10.0" prefWidth="900.0" />
             <Separator layoutY="519.0" opacity="0.5" prefHeight="10.0" prefWidth="900.0" />
             <JFXButton fx:id="registerButton" buttonType="RAISED" layoutX="493.0" layoutY="542.0" onAction="#onClickRegisterButton" prefHeight="40.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #A60000;" text="Register" textAlignment="CENTER" textFill="WHITE">
@@ -142,6 +142,10 @@
                   <Font size="16.0" />
                </font>
             </JFXButton>
+            <Text fx:id="emailWarning" fill="#d33737" layoutX="105.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+            <Text fx:id="mobileWarning" fill="#d33737" layoutX="105.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+            <Text fx:id="passwordWarning" fill="#d33737" layoutX="673.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="200.0" />
+            <Text fx:id="addressWarning" fill="#d33737" layoutX="230.0" layoutY="506.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="200.0" />
          </children>
       </Pane>
    </children>
