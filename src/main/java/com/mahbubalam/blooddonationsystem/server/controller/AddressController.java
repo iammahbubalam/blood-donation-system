@@ -1,10 +1,12 @@
 package com.mahbubalam.blooddonationsystem.server.controller;
 
 import com.mahbubalam.blooddonationsystem.server.entity.Address;
+import com.mahbubalam.blooddonationsystem.server.entity.Person;
 import com.mahbubalam.blooddonationsystem.server.provider.ConnectionProvider;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AddressController {
@@ -62,6 +64,29 @@ public class AddressController {
             throw new RuntimeException(e);
         }
         return isDeleted;
+    }
+    public static Address getAddressById(int id) throws SQLException, ClassNotFoundException {
+
+
+        String district;
+        String subDistrict;
+        String division;
+
+        Address address = null;
+        Connection connection = ConnectionProvider.createConnection();
+        String quarry = "SELECT  * FROM address WHERE id='"+id+"';";
+        PreparedStatement preparedStatement = connection.prepareStatement(quarry);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            district=resultSet.getString("district");
+            subDistrict = resultSet.getString("sub_district");
+            division=resultSet.getString("division");
+            address=new Address(division,district,subDistrict);
+
+
+        }
+        return address ;
     }
 
 }

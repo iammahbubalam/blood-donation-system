@@ -1,6 +1,8 @@
 package com.mahbubalam.blooddonationsystem;
 
 import com.jfoenix.controls.JFXButton;
+import com.mahbubalam.blooddonationsystem.server.controller.PersonController;
+import com.mahbubalam.blooddonationsystem.server.entity.Person;
 import com.mahbubalam.blooddonationsystem.singletron.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -27,6 +30,7 @@ public class MainMenuController implements Initializable {
     public JFXButton donateBloodButton;
     public JFXButton changePasswordButton;
     public BorderPane borderPane;
+    public Label dateOfBirth;
     User user = User.getInstance();
     @FXML
     private Label bloodGroup;
@@ -34,10 +38,6 @@ public class MainMenuController implements Initializable {
     private Label gender;
     @FXML
     private Label editProfileButton;
-    /*@FXML
-    private Label firstName;
-    @FXML
-    private Label lastName;*/
     @FXML
     private Label name;
     @FXML
@@ -62,28 +62,16 @@ public class MainMenuController implements Initializable {
 //        circle.setFill(new ImagePattern(img));
     }
 
-    @FXML
-    protected void onClickEditProfileButton(ActionEvent event) {
-        try {
-            //AnchorPane view = FXMLLoader.load(getClass().getResource("editprofile-view.fxml"));
-
-//            root = FXMLLoader.load(getClass().getResource(""));
-//            mainMenuStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-//            mainMenuStage.setTitle("Blood Bank");
-//            mainMenuStage.setScene(new Scene(root));
-//            mainMenuStage.show();
-            name.setText(user.getName());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     public void onClickUserProfileButton(ActionEvent event) {
+
         try {
             AnchorPane anchorPane = FxmlLoader.getAnchorPane("user-profile-view.fxml");
             borderPane.setCenter(anchorPane);
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -125,6 +113,11 @@ public class MainMenuController implements Initializable {
 
     public void onClickUserChangePasswordButton(ActionEvent event) throws IOException {
         AnchorPane anchorPane = FxmlLoader.getAnchorPane("change-password.fxml");
+        borderPane.setCenter(anchorPane);
+    }
+
+    public void onClickEditProfile(ActionEvent event) throws IOException {
+        AnchorPane anchorPane = FxmlLoader.getAnchorPane("edit-profile-view.fxml");
         borderPane.setCenter(anchorPane);
     }
 }

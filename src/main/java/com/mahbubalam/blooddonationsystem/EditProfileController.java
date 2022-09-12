@@ -1,5 +1,6 @@
 package com.mahbubalam.blooddonationsystem;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -15,6 +19,15 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class EditProfileController extends MainMenuController implements Initializable {
+    public TextField firstNameTextField;
+    public DatePicker dateOfBirthDatePicker;
+    public TextField mobileNumTextField;
+    public PasswordField confirmPasswordField;
+    public ComboBox divisionComboBox;
+    public ComboBox districtComboBox;
+    public TextField thanaTextField;
+    public TextField lastNameTextField;
+    public JFXButton saveButton;
     @FXML
     private ComboBox<String> bloodGroup = new ComboBox<>();
     @FXML

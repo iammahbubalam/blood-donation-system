@@ -12,9 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
 
@@ -24,54 +27,53 @@ public class LoginController {
     public PasswordField passwordInputField;
     public Text showWarning;
     @FXML
-    private Stage loginStage, registerStage;
+    private Stage loginStage;
 
     @FXML
     private Parent root;
 
-
+    @FXML
+    BorderPane borderPane;
     @FXML
     protected void onLoginButtonClick(ActionEvent event){
-        changeStage(event);
-//        if (!inputFieldValidate()){
-//            return;
-//        }
-//        String emailOrPhone = emailOrPhoneInputField.getText();
-//        String password = passwordInputField.getText();
-//        boolean isAuthenticate;
-//        if (emailOrPhone.contains(".com")){
-//            try {
-//                isAuthenticate= AuthenticationController.authenticateWithEmail(emailOrPhone,password);
-//            } catch (ClassNotFoundException | SQLException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }else {
-//            try {
-//                isAuthenticate=AuthenticationController.authenticateWithPhoneNo(emailOrPhone,password);
-//            } catch (ClassNotFoundException | SQLException e) {
-//                throw new RuntimeException(e);
-//            }
-//
-//        }
-//        if (!isAuthenticate){
-//            System.out.println("not");
-//
-//            showWarning.setText("invalid Email or password");
-//        }else {
-//            System.out.println("yes");
-//
-//            changeStage(event);
-//        }
+//        changeStage(event);
+        if (!inputFieldValidate()){
+            return;
+        }
+        String emailOrPhone = emailOrPhoneInputField.getText();
+        String password = passwordInputField.getText();
+        boolean isAuthenticate;
+        if (emailOrPhone.contains(".com")){
+            try {
+                isAuthenticate= AuthenticationController.authenticateWithEmail(emailOrPhone,password);
+            } catch (ClassNotFoundException | SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }else {
+            try {
+                isAuthenticate=AuthenticationController.authenticateWithPhoneNo(emailOrPhone,password);
+            } catch (ClassNotFoundException | SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        if (!isAuthenticate){
+            System.out.println("not");
+
+            showWarning.setText("invalid Email or password");
+        }else {
+            System.out.println("yes");
+
+            changeStage(event);
+        }
     }
 
     @FXML
     protected void onRegisterButtonClick(ActionEvent event){
         try{
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("register-menu.fxml")));
-            registerStage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            registerStage.setTitle("Blood Bank");
-            registerStage.setScene(new Scene(root));
-            registerStage.show();
+            AnchorPane anchorPane = FxmlLoader.getAnchorPane("register-menu.fxml");
+
+            borderPane.setCenter(anchorPane);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -99,5 +101,11 @@ public class LoginController {
             return false;
         }
         return true;
+    }
+
+    public void onClickForgatePassword(ActionEvent event) throws IOException {
+        AnchorPane anchorPane = FxmlLoader.getAnchorPane("forgate-password-view.fxml");
+
+        borderPane.setCenter(anchorPane);
     }
 }

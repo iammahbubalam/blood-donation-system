@@ -14,6 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -85,7 +87,6 @@ public class RegisterMenuController implements Initializable {
     private String division;
     private String district;
     private String thana;
-    private String nid;
     final String  emailRegex = "^(.+)@(.+)$";
     final String phoneRegex = "^01[13-9]\\d{8}$";
     Pattern pattern;
@@ -186,7 +187,6 @@ public class RegisterMenuController implements Initializable {
         district=districtComboBox.getValue();
         thana=thanaTextField.getText();
         division=divisionComboBox.getValue();
-        nid=nidNumTextField.getText();
     }
 
     @FXML
@@ -316,4 +316,10 @@ firstNameWarning.setText("");
     public void onClickThana(ActionEvent event) {
         addressWarning.setText("");
     }
+
+    public void onLoginButtonClick(ActionEvent event) throws IOException {
+
+        nextPage("login-view.fxml",event);
+    }
+
 }
