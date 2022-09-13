@@ -67,7 +67,7 @@ public class MainMenuController implements Initializable {
     public void onClickUserProfileButton(ActionEvent event) {
 
         try {
-            AnchorPane anchorPane = FxmlLoader.getAnchorPane("user-profile-view.fxml");
+            AnchorPane anchorPane = FxmlLoader.getAnchorPane("profile-view.fxml");
             borderPane.setCenter(anchorPane);
 
 

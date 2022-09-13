@@ -12,4 +12,6 @@ module com.mahbubalam.blooddonationsystem {
     exports com.mahbubalam.blooddonationsystem;
     exports com.mahbubalam.blooddonationsystem.singletron;
     opens com.mahbubalam.blooddonationsystem.singletron to javafx.fxml;
+    exports com.mahbubalam.blooddonationsystem.server.entity;
+    opens com.mahbubalam.blooddonationsystem.server.entity to javafx.fxml;
 }

@@ -82,6 +82,8 @@ public class AuthenticationController {
             phoneNO = resultSet.getString(2);
             pas = resultSet.getString(5);
         }
+        System.out.println(pas);
+        System.out.println(phoneNO);
 
 
         return password.equals(pas) && phone.equals(phoneNO);
