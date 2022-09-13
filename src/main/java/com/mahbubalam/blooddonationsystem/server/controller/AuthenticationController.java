@@ -88,17 +88,31 @@ public class AuthenticationController {
     }
 
     public static boolean changePassword(String phone, String password) throws ClassNotFoundException, SQLException {
-        int passwordId = isExist(phone);
+        int passwordId = isExistPhone(phone);
         if (passwordId > 0) {
             return PasswordController.updatePassword(passwordId, password);
         }
         return false;
     }
 
-    public static int isExist(String phone) throws ClassNotFoundException, SQLException {
+    public static int isExistPhone(String phone) throws ClassNotFoundException, SQLException {
         int passwordId = 0;
         Connection connection = ConnectionProvider.createConnection();
         String personQuarry = "SELECT * From person WHERE  phone_number ='" + phone + "';";
+        PreparedStatement preparedStatement = connection.prepareStatement(personQuarry);
+        preparedStatement.executeQuery();
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            passwordId = resultSet.getInt(12);
+        }
+
+
+        return passwordId;
+    }
+    public static int isExistEmail(String email) throws ClassNotFoundException, SQLException {
+        int passwordId = 0;
+        Connection connection = ConnectionProvider.createConnection();
+        String personQuarry = "SELECT * From person WHERE  email ='" + email + "';";
         PreparedStatement preparedStatement = connection.prepareStatement(personQuarry);
         preparedStatement.executeQuery();
         ResultSet resultSet = preparedStatement.executeQuery();

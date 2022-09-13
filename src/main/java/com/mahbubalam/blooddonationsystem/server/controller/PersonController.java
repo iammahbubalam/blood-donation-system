@@ -152,6 +152,16 @@ public class PersonController {
         return preparedStatement.execute();
     }
 
-
+    public static String getEmailByPhoneNo(String phoneNo) throws SQLException, ClassNotFoundException {
+        String quarry = "SELECT  email FROM person WHERE phone_number='"+phoneNo+"';";
+        String email = "";
+        Connection connection = ConnectionProvider.createConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(quarry);
+        ResultSet resultSet= preparedStatement.executeQuery();
+        while (resultSet.next()){
+            email=resultSet.getString("email");
+        }
+        return email;
+    }
 
 }

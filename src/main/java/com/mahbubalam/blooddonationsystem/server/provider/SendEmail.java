@@ -124,7 +124,7 @@ public class SendEmail {
     }
 
     //this is responsible to send email..
-    private static void sendEmail(int code, String to) {
+    public static void sendEmail(int code, String to) {
         String subject = "Password recovery email";
         String message = " <h2>your verification code is</h2><br/><h1><b>"+"    "+code+"</b></h1> ";
         String from="triple.t.202020@gmail.com";
