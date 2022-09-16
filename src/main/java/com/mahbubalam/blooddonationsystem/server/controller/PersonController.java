@@ -1,7 +1,10 @@
 package com.mahbubalam.blooddonationsystem.server.controller;
 
-import com.mahbubalam.blooddonationsystem.server.entity.*;
+import com.mahbubalam.blooddonationsystem.server.entity.BloodGroup;
+import com.mahbubalam.blooddonationsystem.server.entity.Gender;
+import com.mahbubalam.blooddonationsystem.server.entity.Person;
 import com.mahbubalam.blooddonationsystem.server.provider.ConnectionProvider;
+import com.mahbubalam.blooddonationsystem.singletron.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class PersonController {
 
@@ -133,8 +137,9 @@ public class PersonController {
 
     }
 
-    public static boolean readyToDonateEvent(String eventName,int personId) throws SQLException, ClassNotFoundException {
-        String quarry="CREATE EVENT IF NOT EXISTS "+eventName+" ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 MINUTE DO UPDATE person SET ready_to_donate = 1 WHERE id="+personId+";";
+    public static boolean readyToDonateEvent(int personId) throws SQLException, ClassNotFoundException {
+        String eventName= User.getInstance().getName().split("")[0];
+        String quarry="CREATE EVENT "+eventName+" ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 MINUTE DO UPDATE person SET ready_to_donate = 1 WHERE id="+personId+";";
         Connection connection = ConnectionProvider.createConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(quarry);
         return preparedStatement.execute();
@@ -145,23 +150,42 @@ public class PersonController {
         PreparedStatement preparedStatement = connection.prepareStatement(quarry);
         return preparedStatement.execute();
     }
+
     public static boolean setReadyToDonateFalse(int id) throws SQLException, ClassNotFoundException {
-        String quarry="UPDATE person SET need_blood = 0 WHERE id="+id+";";
+        String quarry = "UPDATE person SET ready_to_donate = 0 WHERE id=" + id + ";";
         Connection connection = ConnectionProvider.createConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(quarry);
         return preparedStatement.execute();
     }
 
+    public static boolean getReadyToDonate(int id) throws SQLException, ClassNotFoundException {
+        String quarry = "SELECT ready_to_donate FROM person  WHERE id=" + id + ";";
+        Connection connection = ConnectionProvider.createConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(quarry);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            return resultSet.getBoolean(1);
+        }
+        return false;
+    }
+
     public static String getEmailByPhoneNo(String phoneNo) throws SQLException, ClassNotFoundException {
-        String quarry = "SELECT  email FROM person WHERE phone_number='"+phoneNo+"';";
+        String quarry = "SELECT  email FROM person WHERE phone_number='" + phoneNo + "';";
         String email = "";
         Connection connection = ConnectionProvider.createConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(quarry);
-        ResultSet resultSet= preparedStatement.executeQuery();
-        while (resultSet.next()){
-            email=resultSet.getString("email");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            email = resultSet.getString("email");
         }
         return email;
-    }
 
+    }
+    static String usingRandomUUID() {
+
+        UUID randomUUID = UUID.randomUUID();
+
+        return randomUUID.toString().replaceAll("-", "").substring(0,6);
+
+    }
 }

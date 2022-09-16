@@ -4,12 +4,27 @@ package com.mahbubalam.blooddonationsystem.singletron;
 import com.mahbubalam.blooddonationsystem.util.NetworkUtility;
 
 public class User {
-    public static final User instance = new User();
+    private static final User instance = new User();
     private int userId;
+
+
+
     private String name;
     private String userEmail;
     private String userPhoneNo;
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        System.out.println(bloodGroup + "from set bloodgroup");
+        this.bloodGroup = bloodGroup;
+    }
+
+    private String message;
     private NetworkUtility networkUtility;
+    private String bloodGroup;
 
     public NetworkUtility getNetworkUtility() {
         return networkUtility;
@@ -20,6 +35,13 @@ public class User {
     }
 
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     private User() {
     }
@@ -59,4 +81,5 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
 }

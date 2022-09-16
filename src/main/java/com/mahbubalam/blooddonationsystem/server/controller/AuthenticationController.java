@@ -15,8 +15,9 @@ public class AuthenticationController {
         String phoneNoFromDb = null;
         String emailFromDb = null;
         String parsonName = null;
+        String bloodGroup = null;
         Connection connection = ConnectionProvider.createConnection();
-        String addressQuarry = "SELECT person.id ,person.first_name,person.last_name, person.phone_number , person.email , password.id , password.password FROM person RIGHT JOIN password ON person.password_id=password.id WHERE phone_number='" + phone + "';";
+        String addressQuarry = "SELECT person.id ,person.first_name,person.last_name, person.phone_number , person.email ,person.blood_group, password.id , password.password FROM person RIGHT JOIN password ON person.password_id=password.id WHERE phone_number='" + phone + "';";
         PreparedStatement preparedStatement = connection.prepareStatement(addressQuarry);
         preparedStatement.executeQuery();
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -25,7 +26,8 @@ public class AuthenticationController {
             parsonName = resultSet.getString(2) + " " + resultSet.getString(3);
             phoneNoFromDb = resultSet.getString(4);
             emailFromDb = resultSet.getString(5);
-            passwordFromDb = resultSet.getString(7);
+            bloodGroup = resultSet.getString(6);
+            passwordFromDb = resultSet.getString(8);
         }
 
         if (password.equals(passwordFromDb) && phone.equals(phoneNoFromDb)) {
@@ -33,6 +35,7 @@ public class AuthenticationController {
             User.getInstance().setUserPhoneNo(phoneNoFromDb);
             User.getInstance().setUserEmail(emailFromDb);
             User.getInstance().setName(parsonName);
+            User.getInstance().setBloodGroup(bloodGroup);
             return true;
         }
 
@@ -45,8 +48,9 @@ public class AuthenticationController {
         String phoneNoFromDb = null;
         String emailFromDb = null;
         String parsonName = null;
+        String bloodGroup = null;
         Connection connection = ConnectionProvider.createConnection();
-        String addressQuarry = "SELECT person.id ,person.first_name,person.last_name, person.phone_number , person.email , password.id , password.password FROM person RIGHT JOIN password ON person.password_id=password.id WHERE email='" + email + "';";
+        String addressQuarry = "SELECT person.id ,person.first_name,person.last_name, person.phone_number , person.email ,person.blood_group, password.id , password.password FROM person RIGHT JOIN password ON person.password_id=password.id WHERE email='" + email + "';";
         PreparedStatement preparedStatement = connection.prepareStatement(addressQuarry);
         preparedStatement.executeQuery();
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -55,7 +59,8 @@ public class AuthenticationController {
             parsonName = resultSet.getString(2) + " " + resultSet.getString(3);
             phoneNoFromDb = resultSet.getString(4);
             emailFromDb = resultSet.getString(5);
-            passwordFromDb = resultSet.getString(7);
+            bloodGroup = resultSet.getString(6);
+            passwordFromDb = resultSet.getString(8);
 
         }
 
@@ -64,6 +69,8 @@ public class AuthenticationController {
             User.getInstance().setUserPhoneNo(phoneNoFromDb);
             User.getInstance().setUserEmail(emailFromDb);
             User.getInstance().setName(parsonName);
+            User.getInstance().setBloodGroup(bloodGroup);
+            System.out.println(bloodGroup + "from authentication controller");
             return true;
         }
 

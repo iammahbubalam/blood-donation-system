@@ -10,10 +10,11 @@ public class DonationController {
 
         int donationId = 0;
         Connection connection = ConnectionProvider.createConnection();
-        String addressQuarry = "insert  into  donation(blood_group,donation_date, hospital_name, received_donner_id, given_donner_id)   values('"+donation.getBloodGroup()+"','" + donation.getDonationDate() + "','" + donation.getHospitalName() + "','" + donation.getDonatedPersonId() + "','" + donation.getReceivedPersonId() + "');";
+        String addressQuarry = "insert  into  donation(blood_group,donation_date, hospital_name, received_donner_id, given_donner_id)   values('"+donation.getBloodGroup()+"','" + donation.getDonationDate() + "','" + donation.getHospitalName() + "','" + donation.getReceivedPersonId() + "','" + donation.getDonatedPersonId() + "');";
         PreparedStatement preparedStatement = connection.prepareStatement(addressQuarry, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.executeUpdate();
         ResultSet resultSet = preparedStatement.getGeneratedKeys();
+        System.out.println(donation.getBloodGroup());
 
         while (resultSet.next()) {
             donationId = resultSet.getInt(1);

@@ -28,8 +28,6 @@ public class Donation {
         this.bloodGroup = bloodGroup;
     }
 
-    public Donation() {
-    }
 
     public int getDonatedPersonId() {
         return donatedPersonId;

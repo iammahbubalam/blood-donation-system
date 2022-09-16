@@ -1,8 +1,6 @@
 package com.mahbubalam.blooddonationsystem;
 
 import com.jfoenix.controls.JFXButton;
-import com.mahbubalam.blooddonationsystem.server.controller.PersonController;
-import com.mahbubalam.blooddonationsystem.server.entity.Person;
 import com.mahbubalam.blooddonationsystem.singletron.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,13 +13,14 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 public class MainMenuController implements Initializable {
     public JFXButton userProfileButton;
@@ -30,7 +29,7 @@ public class MainMenuController implements Initializable {
     public JFXButton donateBloodButton;
     public JFXButton changePasswordButton;
     public BorderPane borderPane;
-    public Label dateOfBirth;
+    public Text txt;
     User user = User.getInstance();
     @FXML
     private Label bloodGroup;
@@ -67,7 +66,7 @@ public class MainMenuController implements Initializable {
     public void onClickUserProfileButton(ActionEvent event) {
 
         try {
-            AnchorPane anchorPane = FxmlLoader.getAnchorPane("profile-view.fxml");
+            AnchorPane anchorPane = FxmlLoader.getAnchorPane("user-profile-view.fxml");
             borderPane.setCenter(anchorPane);
 
 
@@ -120,4 +119,5 @@ public class MainMenuController implements Initializable {
         AnchorPane anchorPane = FxmlLoader.getAnchorPane("edit-profile-view.fxml");
         borderPane.setCenter(anchorPane);
     }
+
 }
