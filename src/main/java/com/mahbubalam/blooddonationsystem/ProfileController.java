@@ -50,7 +50,7 @@ public class ProfileController implements Initializable {
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        address.setText(personAddress.getCountry() + ", " + personAddress.getDivision() + ", " + personAddress.getDivision() + ", " + personAddress.getSubDistrict() + ".");
+        address.setText(personAddress.getCountry() + ", " + personAddress.getDivision() + ", " + personAddress.getDistrict() + ", " + personAddress.getSubDistrict() + ".");
 
     }
 }

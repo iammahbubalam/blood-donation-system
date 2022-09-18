@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.RegisterMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.RegisterMenuController">
    <children>
       <TextField fx:id="firstNameTextField" layoutX="115.0" layoutY="45.0" onKeyReleased="#onKeyReleasedFirstNameTextField" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 20;">
          <font>
@@ -120,10 +120,5 @@
       <Text fx:id="addressWarning" fill="#d33737" layoutX="240.0" layoutY="516.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="200.0" />
       <JFXButton layoutX="22.0" layoutY="572.0" onAction="#onLoginButtonClick" prefHeight="25.0" prefWidth="166.0" text="Log in" textFill="#ff0f0f" />
       <Label layoutX="48.0" layoutY="555.0" text="Already have an account?" textAlignment="CENTER" />
-      <Label layoutX="389.0" layoutY="54.0" text="Resister" textAlignment="CENTER" textFill="#eb0f0f">
-         <font>
-            <Font name="SansSerif Bold" size="36.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

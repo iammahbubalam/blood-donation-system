@@ -101,7 +101,7 @@ public class LoginController {
     }
 
     public void onClickForgatePassword(ActionEvent event) throws IOException {
-        AnchorPane anchorPane = FxmlLoader.getAnchorPane("forgate-password-view.fxml");
+        AnchorPane anchorPane = FxmlLoader.getAnchorPane("forget-password-view.fxml");
 
         borderPane.setCenter(anchorPane);
     }

@@ -22,7 +22,7 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-public class ForgatePasswordController implements Initializable {
+public class ForgetPasswordController implements Initializable {
     public TextField emailOrPhoneInputField;
     public TextField verificationCodeInputField;
     public Text warning;
@@ -44,7 +44,7 @@ public class ForgatePasswordController implements Initializable {
             warning1.setText("Password Changed");
             nextPage("login-view.fxml",event);
 
-        }else  warning1.setText("Password are not equal");
+        }else  warning1.setText("Passwords are not same. Please try again!");
 
     }
     private void nextPage(String name, ActionEvent event) throws IOException {
@@ -61,7 +61,7 @@ public class ForgatePasswordController implements Initializable {
             newPassWordField.setEditable(true);
             verificationCodeInputField.setEditable(false);
             emailOrPhoneInputField.setEditable(false);
-            warning.setText("you are verified \n please update your password");
+            warning.setText("You are verified! \n Please update your password!");
         }
 
     }
@@ -77,12 +77,12 @@ public class ForgatePasswordController implements Initializable {
     public void onSendCodeClick(ActionEvent event) {
         String emailOrPhone = emailOrPhoneInputField.getText();
         if (Objects.equals(emailOrPhone, "")){
-            warning.setText("Input a valid phone no or email");
+            warning.setText("Input a valid Phone Number or Email");
         }else {
             if (emailOrPhone.contains(".com")){
                 try {
                     passwordId= AuthenticationController.isExistEmail(emailOrPhone);
-                    if (passwordId<1)warning.setText("no user found with this email");
+                    if (passwordId<1)warning.setText("No user found with this email");
                     else sendVerificationCode(emailOrPhone) ;
                 } catch (ClassNotFoundException | SQLException e) {
                     throw new RuntimeException(e);
@@ -91,7 +91,7 @@ public class ForgatePasswordController implements Initializable {
                 try {
                     String email = PersonController.getEmailByPhoneNo(emailOrPhone);
                     passwordId= AuthenticationController.isExistPhone(emailOrPhone);
-                    if (passwordId<1)warning.setText("no user found with this phone");
+                    if (passwordId<1)warning.setText("No user found with this phone");
                     else sendVerificationCode(email) ;
                 } catch (ClassNotFoundException | SQLException e) {
                     throw new RuntimeException(e);
@@ -106,7 +106,7 @@ public class ForgatePasswordController implements Initializable {
         Random random = new Random();
         code=random.nextInt(999999);
         SendEmail.sendEmail(code, emailOrPhone);
-        warning.setText("please check your email  verification code sent");
+        warning.setText("Verification code sent! \n Please check your email!");
     }
 
     public void onKeyPressEmailInputField(KeyEvent keyEvent) {

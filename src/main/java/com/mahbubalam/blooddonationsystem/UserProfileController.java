@@ -41,7 +41,7 @@ public class UserProfileController implements Initializable, Runnable {
     public Text warning;
     public TextField textField;
     User user = User.getInstance();
-    int userId =3;
+    int userId =1;
     NetworkUtility networkUtility;
 
     @Override

@@ -3,8 +3,11 @@ package com.mahbubalam.blooddonationsystem.server.controller;
 import com.mahbubalam.blooddonationsystem.server.entity.BloodGroup;
 import com.mahbubalam.blooddonationsystem.server.entity.Gender;
 import com.mahbubalam.blooddonationsystem.server.entity.Person;
+import com.mahbubalam.blooddonationsystem.server.model.ShowPerson;
 import com.mahbubalam.blooddonationsystem.server.provider.ConnectionProvider;
 import com.mahbubalam.blooddonationsystem.singletron.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -45,6 +48,45 @@ public class PersonController {
 
 
     }
+    public static ObservableList<ShowPerson> getPersonWhoReadyToDonate2() throws SQLException, ClassNotFoundException {
+        String quarry = "SELECT id, first_name, last_name, email, blood_group, phone_number FROM person WHERE " +
+                "ready_to_donate = 1;";
+        return getPersonObservableList(quarry);
+
+
+    }
+    public static ObservableList<ShowPerson> getPersonWhoNeedBlood2() throws SQLException, ClassNotFoundException {
+        String quarry = "SELECT id, first_name, last_name, email, blood_group, phone_number FROM person WHERE " +
+                "need_blood = 1;";
+        return getPersonObservableList(quarry);
+
+
+    }
+
+    private static ObservableList<ShowPerson> getPersonObservableList(String quarry) throws ClassNotFoundException, SQLException {
+        int id;
+        String name;
+        String phoneNumber;
+        String email;
+        String bloodGroup;
+        ObservableList<ShowPerson> list = FXCollections.observableArrayList();
+        Connection connection = ConnectionProvider.createConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(quarry);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()) {
+            id=resultSet.getInt("id");
+            bloodGroup= resultSet.getString("blood_group");
+            email = resultSet.getString("email");
+            name=resultSet.getString("first_name") +" "+ resultSet.getString("last_name");
+            phoneNumber=resultSet.getString("phone_number");
+            if (id==User.getInstance().getUserId()) continue;
+            list.add(new ShowPerson(id,name,email,phoneNumber,bloodGroup));
+
+        }
+        return list;
+    }
+
     public static  List<Person> getPersonWhoNeedBlood() throws SQLException, ClassNotFoundException {
         String quarry = "SELECT  * FROM person WHERE need_blood = 1;";
         return getPersonList(quarry);
@@ -146,6 +188,12 @@ public class PersonController {
     }
     public static boolean setNeedBloodTrue(int id) throws SQLException, ClassNotFoundException {
         String quarry="UPDATE person SET need_blood = 1 WHERE id="+id+";";
+        Connection connection = ConnectionProvider.createConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(quarry);
+        return preparedStatement.execute();
+    }
+    public static boolean setNeedBloodFalse(int id) throws SQLException, ClassNotFoundException {
+        String quarry="UPDATE person SET need_blood = 0 WHERE id="+id+";";
         Connection connection = ConnectionProvider.createConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(quarry);
         return preparedStatement.execute();

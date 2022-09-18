@@ -6,30 +6,27 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.RadialGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.RequestBloodController">
+<AnchorPane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.RequestBloodController">
    <children>
-      <TableView editable="true" layoutX="20.0" layoutY="174.0" prefHeight="486.0" prefWidth="760.0">
+      <TableView fx:id="tableView" editable="true" layoutX="20.0" layoutY="174.0" prefHeight="486.0" prefWidth="760.0">
          <columns>
-            <TableColumn prefWidth="184.0" text="Name" />
-            <TableColumn prefWidth="181.0" text="Blood Group" />
-            <TableColumn prefWidth="221.0" text="Phone Number" />
-            <TableColumn prefWidth="173.0" text="Profile" />
+            <TableColumn fx:id="nameColumn" prefWidth="184.0" text="Name" />
+            <TableColumn fx:id="emailColumn" prefWidth="184.0" text="Email" />
+            <TableColumn fx:id="bloodgroupColumn" prefWidth="181.0" text="Blood Group" />
+            <TableColumn fx:id="phonenumberColumn" prefWidth="221.0" text="Phone Number" />
          </columns>
       </TableView>
-      <Label layoutX="325.0" layoutY="14.0" text="Search Donors">
+      <Label layoutX="342.0" layoutY="14.0" text="Search Donors">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ComboBox fx:id="bloodGroupComboBox" editable="true" layoutX="361.0" layoutY="63.0" onAction="#onClickBloodGroupComboBox" prefHeight="25.0" prefWidth="100.0" />
+      <ComboBox fx:id="bloodGroupComboBox" editable="true" layoutX="391.0" layoutY="63.0" onAction="#onClickBloodGroupComboBox" prefHeight="25.0" prefWidth="100.0" />
       <ComboBox fx:id="districtComboBox" editable="true" layoutX="92.0" layoutY="63.0" onAction="#onClickDistrictComboBox" prefHeight="25.0" prefWidth="150.0" />
-      <ComboBox fx:id="divisionComboBox" editable="true" layoutX="564.0" layoutY="63.0" onAction="#onClickDivisionComboBox" prefHeight="25.0" prefWidth="150.0" />
-      <Label layoutX="262.0" layoutY="65.0" prefHeight="20.0" prefWidth="90.0" text="Blood Group:">
+      <ComboBox fx:id="divisionComboBox" editable="true" layoutX="631.0" layoutY="63.0" onAction="#onClickDivisionComboBox" prefHeight="25.0" prefWidth="150.0" />
+      <Label layoutX="292.0" layoutY="65.0" prefHeight="20.0" prefWidth="90.0" text="Blood Group:">
          <font>
             <Font size="14.0" />
          </font>
@@ -39,31 +36,15 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="489.0" layoutY="65.0" text="Division:">
+      <Label layoutX="556.0" layoutY="65.0" text="Division:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="loadPeople" alignment="TOP_CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="669.0" layoutY="109.0" onAction="#onClickLoadButton" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #a60000;" text="Load" textFill="#e8e8e8">
+      <JFXButton fx:id="loadPeople" alignment="TOP_CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="688.0" layoutY="109.0" onAction="#onClickLoadButton" prefHeight="35.0" prefWidth="90.0" ripplerFill="#e73b3b" style="-fx-background-color: #a60000;" text="Load" textFill="#e8e8e8">
          <font>
             <Font size="16.0" />
          </font>
-         <ripplerFill>
-            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </ripplerFill>
       </JFXButton>
    </children>
 </AnchorPane>
