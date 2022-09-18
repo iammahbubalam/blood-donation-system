@@ -188,7 +188,7 @@ public class PersonController {
 
     public static boolean readyToDonateEvent(int personId) throws SQLException, ClassNotFoundException {
         String eventName= User.getInstance().getName().split("")[0];
-        String quarry="CREATE EVENT "+eventName+" ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 1 MINUTE DO UPDATE person SET ready_to_donate = 1 WHERE id="+personId+";";
+        String quarry="CREATE EVENT "+eventName+" ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 2 MINUTE DO UPDATE person SET ready_to_donate = 1 WHERE id="+personId+";";
         Connection connection = ConnectionProvider.createConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(quarry);
         return preparedStatement.execute();

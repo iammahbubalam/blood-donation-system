@@ -26,22 +26,22 @@ public class Reader implements Runnable {
             System.out.println(actualMessage);
             String[] words = actualMessage.split("\\$");
             if (words[2].equals("text")) {
-                userProfileController.textArea.appendText(words[1] + " Says " + words[3]);
+                userProfileController.textArea.appendText("\n"+words[1] + " Says " + words[3]);
             }
             if (words[2].equals("requestForBlood")) {
                 user.setMessage(actualMessage);
-                userProfileController.textArea.appendText(words[1] + " sent you a request for donation on " + words[3]+"\n");
+                userProfileController.textArea.appendText("\n"+words[1] + " sent you a request for donation on " + words[3]+"\n");
             }
             if (words[2].equals("donateBlood")) {
-                userProfileController.textArea.appendText(words[1] + " Want to donate you blood ");
+                userProfileController.textArea.appendText("\n"+words[1] + " Want to donate you blood ");
             }
             if (words[3].equals("accepted")) {
                 String msgToSend = words[1] + "  Accepted your request";
-                userProfileController.textArea.appendText(msgToSend);
+                userProfileController.textArea.appendText("\n"+msgToSend);
             }
             if (words[3].equals("refused")) {
                 String msgToSend = words[1] + "  Refused your request";
-                userProfileController.textArea.appendText(msgToSend);
+                userProfileController.textArea.appendText("\n"+msgToSend);
             }
         }
     }

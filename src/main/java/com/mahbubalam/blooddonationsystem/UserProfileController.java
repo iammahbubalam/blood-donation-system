@@ -137,7 +137,6 @@ public class UserProfileController implements Initializable, Runnable {
     public void accept(ActionEvent event) throws SQLException, ClassNotFoundException {
         warning.setText("");
         if (user.getMessage() != null) {
-            System.out.println(user.getBloodGroup()+"from user profile controller");
             String[] message = user.getMessage().split("\\$");
             DonationController.saveDonation(new Donation(message[3], new Date(new java.util.Date().getTime()), user.getUserId(), showPerson.getId(), BloodGroup.valueOf(user.getBloodGroup())));
             PersonController.setReadyToDonateFalse(user.getUserId());
