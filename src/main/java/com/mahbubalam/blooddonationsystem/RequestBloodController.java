@@ -2,37 +2,43 @@ package com.mahbubalam.blooddonationsystem;
 
 
 import com.mahbubalam.blooddonationsystem.server.controller.PersonController;
-import com.mahbubalam.blooddonationsystem.server.entity.Person;
 import com.mahbubalam.blooddonationsystem.server.model.ShowPerson;
 import com.mahbubalam.blooddonationsystem.singletron.User;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class RequestBloodController implements Initializable {
 
     public ComboBox<String> bloodGroupComboBox;
     public ComboBox<String> divisionComboBox;
     public ComboBox<String> districtComboBox;
-    private final String[] bloodGroupsList = {"O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"};
-    private final String[] divisionList = {"Dhaka", "Chattogram", "Rajshahi", "Sylhet", "Barisal", "Khulna", "Rangpur",
-            "Mymensingh"};
-    private final String[] districtList = {"Dhaka","Faridpur","Gazipur","Gopalganj","Jamalpur","Kishoreganj","Madaripur",
-            "Manikganj","Munshiganj","Mymensingh","Narayanganj","Narsingdi","Netrokona","Rajbari","Shariatpur","Sherpur","Tangail","Bogra","Joypurhat","Naogaon","Natore","Nawabganj","Pabna","Rajshahi","Sirajgonj","Dinajpur","Gaibandha","Kurigram","Lalmonirhat","Nilphamari","Panchagarh","Rangpur","Thakurgaon","Barguna","Barisal","Bhola","Jhalokati","Patuakhali","Pirojpur","Bandarban","Brahmanbaria","Chandpur","Chittagong","Comilla","Cox''s Bazar","Feni","Khagrachari","Lakshmipur","Noakhali","Rangamati","Habiganj","Maulvibazar","Sunamganj","Sylhet","Bagerhat","Chuadanga","Jessore","Jhenaidah","Khulna","Kushtia","Magura","Meherpur","Narail","Satkhira"};
-    public TableColumn<ShowPerson,String> bloodgroupColumn;
+       public TableColumn<ShowPerson,String> bloodgroupColumn;
     public TableColumn<ShowPerson,String> phonenumberColumn;
     public TableColumn<ShowPerson,String> nameColumn;
     public TableColumn<ShowPerson,String> emailColumn;
     public TableView<ShowPerson> tableView;
+    public TableColumn<ShowPerson,String> id;
+    ShowPerson person;
     ObservableList<ShowPerson> personObservableList;
 
 
@@ -42,25 +48,16 @@ public class RequestBloodController implements Initializable {
         phonenumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
         bloodgroupColumn.setCellValueFactory(new PropertyValueFactory<>("bloodGroup"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+
         tableView.setItems(personObservableList);
     }
 
-    public void onClickBloodGroupComboBox(ActionEvent event) {
-    }
 
-    private void removeMe(){
-        for (ShowPerson personList:personObservableList) {
-            if (personList.getId()==User.getInstance().getUserId()){
-                personObservableList.remove(personList);
-            }
-        }
-    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        bloodGroupComboBox.getItems().addAll(bloodGroupsList);
-        divisionComboBox.getItems().addAll(divisionList);
-        districtComboBox.getItems().addAll(districtList);
         try {
             PersonController.setNeedBloodTrue(User.getInstance().getUserId());
         } catch (SQLException | ClassNotFoundException e) {
@@ -69,9 +66,22 @@ public class RequestBloodController implements Initializable {
 
     }
 
-    public void onClickDistrictComboBox(ActionEvent event) {
-    }
 
-    public void onClickDivisionComboBox(ActionEvent event) {
+
+    public void omMouseClick(MouseEvent mouseEvent) throws IOException {
+        if (mouseEvent.getClickCount() == 1) //Checking double click
+        {
+            person = tableView.getSelectionModel().getSelectedItem();
+            User.getInstance().setShowPerson(person);
+        }
+        if (mouseEvent.getClickCount() == 2) //Checking double click
+        {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("req-user-profile-view.fxml")));
+            Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            stage.setTitle("BloodBank");
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+
     }
 }

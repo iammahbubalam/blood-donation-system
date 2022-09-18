@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -82,6 +83,7 @@ public class LoginController {
             loginStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             loginStage.setTitle("Blood Bank");
             loginStage.setScene(new Scene(root));
+
             loginStage.show();
         } catch (Exception e) {
             e.printStackTrace();

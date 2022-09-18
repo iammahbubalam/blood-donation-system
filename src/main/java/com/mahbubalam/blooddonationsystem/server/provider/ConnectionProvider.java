@@ -10,7 +10,7 @@ public class ConnectionProvider {
     public static Connection createConnection() throws ClassNotFoundException, SQLException {
 
         String user = "root";
-        String password = "Bl00dB@nk";
+        String password = "root";
         String url = "jdbc:mysql://localhost:3306/bloodbankdb";
 
         Class.forName("com.mysql.cj.jdbc.Driver");

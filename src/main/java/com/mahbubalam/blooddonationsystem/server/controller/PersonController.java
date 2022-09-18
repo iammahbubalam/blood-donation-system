@@ -26,6 +26,13 @@ public class PersonController {
         PreparedStatement preparedStatement = connection.prepareStatement(addressQuarry);
         preparedStatement.execute();
     }
+    public static void updateName(String firstName, String lastName, int id) throws SQLException, ClassNotFoundException {
+
+        Connection connection = ConnectionProvider.createConnection();
+        String addressQuarry = "UPDATE person SET person.first_name = '" + firstName + "',person.last_name = '" + lastName +  "' WHERE person.id='" + id + "';";
+        PreparedStatement preparedStatement = connection.prepareStatement(addressQuarry);
+        preparedStatement.execute();
+    }
 
     public static List<Person> getAllPerson() throws SQLException, ClassNotFoundException {
         String addressQuarry = "SELECT * FROM person;";
@@ -215,6 +222,30 @@ public class PersonController {
             return resultSet.getBoolean(1);
         }
         return false;
+    }
+    public static String getGenderById(int id) throws SQLException, ClassNotFoundException {
+        String quarry = "SELECT  gender FROM person WHERE id='" + id + "';";
+        String gender = "";
+        Connection connection = ConnectionProvider.createConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(quarry);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            gender = resultSet.getString("gender");
+        }
+        return gender;
+
+    }
+    public static int getAddressId(int ida) throws SQLException, ClassNotFoundException {
+        String quarry = "SELECT  address_id FROM person WHERE id='" + ida + "';";
+        int id = -1;
+        Connection connection = ConnectionProvider.createConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(quarry);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            id = resultSet.getInt("address_id");
+        }
+        return id;
+
     }
 
     public static String getEmailByPhoneNo(String phoneNo) throws SQLException, ClassNotFoundException {

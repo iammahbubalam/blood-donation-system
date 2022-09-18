@@ -1,6 +1,7 @@
 package com.mahbubalam.blooddonationsystem.singletron;
 
 
+import com.mahbubalam.blooddonationsystem.server.model.ShowPerson;
 import com.mahbubalam.blooddonationsystem.util.NetworkUtility;
 
 public class User {
@@ -12,6 +13,15 @@ public class User {
     private String name;
     private String userEmail;
     private String userPhoneNo;
+    private ShowPerson showPerson;
+
+    public ShowPerson getShowPerson() {
+        return showPerson;
+    }
+
+    public void setShowPerson(ShowPerson showPerson) {
+        this.showPerson = showPerson;
+    }
 
     public String getBloodGroup() {
         return bloodGroup;

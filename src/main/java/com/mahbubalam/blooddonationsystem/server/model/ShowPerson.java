@@ -7,6 +7,17 @@ public class ShowPerson {
     String phoneNo;
     String bloodGroup;
 
+    @Override
+    public String toString() {
+        return "ShowPerson{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNo='" + phoneNo + '\'' +
+                ", bloodGroup='" + bloodGroup + '\'' +
+                '}';
+    }
+
     public ShowPerson(int id, String name, String email, String phoneNo, String bloodGroup) {
         this.id = id;
         this.name = name;

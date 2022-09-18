@@ -73,14 +73,6 @@ public class RegisterMenuController implements Initializable {
     private ComboBox<String> districtComboBox = new ComboBox<>();
     private final String[] districtList = {"Dhaka","Faridpur","Gazipur","Gopalganj","Jamalpur","Kishoreganj","Madaripur",
             "Manikganj","Munshiganj","Mymensingh","Narayanganj","Narsingdi","Netrokona","Rajbari","Shariatpur","Sherpur","Tangail","Bogra","Joypurhat","Naogaon","Natore","Nawabganj","Pabna","Rajshahi","Sirajgonj","Dinajpur","Gaibandha","Kurigram","Lalmonirhat","Nilphamari","Panchagarh","Rangpur","Thakurgaon","Barguna","Barisal","Bhola","Jhalokati","Patuakhali","Pirojpur","Bandarban","Brahmanbaria","Chandpur","Chittagong","Comilla","Cox''s Bazar","Feni","Khagrachari","Lakshmipur","Noakhali","Rangamati","Habiganj","Maulvibazar","Sunamganj","Sylhet","Bagerhat","Chuadanga","Jessore","Jhenaidah","Khulna","Kushtia","Magura","Meherpur","Narail","Satkhira"};
-//    private final String[] districtListOfBarisal = {  "Barguna", "Barisal", "Bhola", "Jhalokati", "Patuakhali", "Pirojpur"};
-//    private final String[] districtListOfDhaka = {   "Dhaka", "Faridpur",  "Gazipur", "Gopalganj",   "Jamalpur", "Kishoreganj", "Madaripur",  "Manikganj",   "Munshiganj",   "Narayanganj", "Narsingdi", "Rajbari", "Shariatpur",  "Tangail"};
-//    private final String[] districtListOfChattogram = {  "Bandarban", "Brahmanbaria", "Chandpur",  "Chittagong", "Comilla", "Cox's Bazar",  "Feni", "Khagrachhari", "Lakshmipur",  "Noakhali",  "Rangamati"};
-//    private final String[] districtListOfRajshahi = {    "Bogra","Joypurhat","Naogaon","Natore",  "Nawabganj", "Pabna", "Rajshahi", "Sirajganj"};
-//    private final String[] districtListOfSylhet = {    "Habiganj", "Maulvi Bazar",  "Sunamganj","Sylhet"};
-//    private final String[] districtListOfKhulna = {   "Bagerhat", "Chuadanga",   "Jessore",  "Jhenaidaha",  "Khulna",  "Kushtia",   "Magura",    "Meherpur",    "Narail", "Satkhira"};
-//    private final String[] districtListOfRangpur = {    "Dinajpur", "Gaibandha", "Kurigram", "Lalmonirhat", "Nilphamari", "Panchagarh", "Rangpur",  "Thakurgaon"};
-//    private final String[] districtListOfMymensingh = {   "Jamalpur", "Mymensingh" , "Netrokona" , "Sherpur"};
     @FXML
     private Button registerButton;
     private String password;
