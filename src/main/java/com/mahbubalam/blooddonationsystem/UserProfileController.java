@@ -130,7 +130,7 @@ public class UserProfileController implements Initializable, Runnable {
             Data data = new Data();
             data.message = user.getUserId() + "$" + showPerson.getId() + "$" + user.getName() + "$" + "text" + "$" + textField.getText();
             networkUtility.write(data.clone());
-            textArea.appendText(textField.getText() + "\n");
+            textArea.appendText("\n"+textField.getText() + "\n");
         }
     }
 
@@ -171,6 +171,7 @@ public class UserProfileController implements Initializable, Runnable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("BloodBank");
         stage.setScene(new Scene(root));
+        Thread.interrupted();
         stage.show();
     }
 }
