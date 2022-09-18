@@ -5,54 +5,72 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="900.0" style="-fx-background-color: #6A0000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="900.0" style="-fx-background-color: #A60000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.LoginController">
    <children>
       <BorderPane fx:id="borderPane" prefHeight="770.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <AnchorPane prefHeight="131.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="273.0" prefWidth="903.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="333.0" layoutY="47.0" text="Blood Source" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="SansSerif Bold" size="36.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="391.0" layoutY="97.0" text="Every Drop Counts" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="SansSerif Regular" size="14.0" />
-                     </font>
-                  </Label>
+                  <ImageView fitHeight="295.0" fitWidth="319.0" layoutX="301.0" layoutY="2.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@BloodSource.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </top>
          <center>
-            <AnchorPane style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="903.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
                <children>
-                  <JFXButton layoutX="717.0" layoutY="549.0" onAction="#onClickForgatePassword" prefHeight="25.0" prefWidth="166.0" ripplerFill="WHITE" text="Forget Password?" textFill="#ff0f0f" />
-                  <JFXButton layoutX="44.0" layoutY="560.0" onAction="#onRegisterButtonClick" text="Register with us!" textFill="#ff0f0f" />
-                  <Separator layoutX="3.0" layoutY="517.0" prefHeight="9.0" prefWidth="900.0" />
-                  <Label layoutX="52.0" layoutY="543.0" text="Don't have an account?" textAlignment="CENTER" />
-                  <Label layoutX="222.0" layoutY="250.0" text="Password:">
+                  <JFXButton layoutX="716.0" layoutY="398.0" onAction="#onClickForgatePassword" prefHeight="25.0" prefWidth="166.0" ripplerFill="WHITE" text="Forget Password?" textFill="#ff0f0f" />
+                  <JFXButton layoutX="43.0" layoutY="409.0" onAction="#onRegisterButtonClick" text="Register with us!" textFill="#ff0f0f" />
+                  <Separator layoutX="2.0" layoutY="366.0" prefHeight="9.0" prefWidth="900.0" />
+                  <Label layoutX="51.0" layoutY="392.0" text="Don't have an account?" textAlignment="CENTER" />
+                  <Label layoutX="221.0" layoutY="153.0" text="Password:">
                      <font>
                         <Font size="16.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons8-password-48.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Label>
-                  <JFXButton buttonType="RAISED" layoutX="512.0" layoutY="326.0" onAction="#onLoginButtonClick" prefHeight="40.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #A60000;" text="Login" textAlignment="CENTER" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" layoutX="511.0" layoutY="229.0" onAction="#onLoginButtonClick" prefHeight="40.0" prefWidth="100.0" ripplerFill="WHITE" style="-fx-background-color: #A60000;" text="Login" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons8-enter-48.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </JFXButton>
-                  <Text fx:id="showWarning" fill="#d33737" layoutX="377.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="231.0" />
-                  <TextField fx:id="emailOrPhoneInputField" layoutX="362.0" layoutY="171.0" prefHeight="35.0" prefWidth="260.0" />
-                  <PasswordField fx:id="passwordInputField" layoutX="362.0" layoutY="245.0" prefHeight="35.0" prefWidth="260.0" />
-                  <Label layoutX="222.0" layoutY="176.0" text="Email/Mobile:">
+                  <Text fx:id="showWarning" fill="#d33737" layoutX="376.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="231.0" />
+                  <TextField fx:id="emailOrPhoneInputField" layoutX="361.0" layoutY="74.0" prefHeight="35.0" prefWidth="260.0" />
+                  <PasswordField fx:id="passwordInputField" layoutX="361.0" layoutY="148.0" prefHeight="35.0" prefWidth="260.0" />
+                  <Label layoutX="221.0" layoutY="79.0" text="Email/Mobile:">
                      <font>
                         <Font size="16.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons8-mail-48.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Label>
                </children>
             </AnchorPane>
