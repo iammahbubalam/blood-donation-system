@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
@@ -83,7 +84,9 @@ public class LoginController {
             loginStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             loginStage.setTitle("Blood Bank");
             loginStage.setScene(new Scene(root));
-
+            loginStage.getIcons().add(new Image("C:\\Users\\Subhey\\Documents\\Github\\Java_Learning\\blood-donation" +
+                    "-system\\src\\main\\resources\\com\\mahbubalam\\blooddonationsystem\\Rokto2.png"));
+            loginStage.setResizable(false);
             loginStage.show();
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,5 +1,6 @@
 package com.mahbubalam.blooddonationsystem;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.mahbubalam.blooddonationsystem.server.controller.AddressController;
 import com.mahbubalam.blooddonationsystem.server.controller.DonationController;
@@ -129,12 +130,11 @@ public class UserProfileController implements Initializable, Runnable {
             Data data = new Data();
             data.message = user.getUserId() + "$" + showPerson.getId() + "$" + user.getName() + "$" + "text" + "$" + textField.getText();
             networkUtility.write(data.clone());
-            textArea.appendText("\n"+"you -->"+textField.getText() + "\n");
-            textField.setText("");
+            textArea.appendText("\n"+textField.getText() + "\n");
         }
     }
 
-    public void accept(ActionEvent event) throws SQLException, ClassNotFoundException, CloneNotSupportedException {
+    public void accept(ActionEvent event) throws SQLException, ClassNotFoundException {
         warning.setText("");
         if (user.getMessage() != null) {
             String[] message = user.getMessage().split("\\$");
@@ -142,9 +142,6 @@ public class UserProfileController implements Initializable, Runnable {
             PersonController.setReadyToDonateFalse(user.getUserId());
             PersonController.readyToDonateEvent( user.getUserId());
             warning.setText("donation done");
-            Data data = new Data();
-            data.message = user.getUserId() + "$" + showPerson.getId() + "$" + user.getName() + "$" + "accepted" + "$" + "Accepted Your Request!" ;
-            networkUtility.write(data.clone());
             hospitalNameTExtFild.setText("");
             textArea.appendText("\nyou accept donation request");
             user.setMessage(null);
@@ -174,17 +171,7 @@ public class UserProfileController implements Initializable, Runnable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("BloodBank");
         stage.setScene(new Scene(root));
+        Thread.interrupted();
         stage.show();
-    }
-
-    public void reject(ActionEvent event) throws CloneNotSupportedException {
-        warning.setText("");
-        if (user.getMessage() != null) {
-        Data data = new Data();
-        data.message = user.getUserId() + "$" + showPerson.getId() + "$" + user.getName() + "$" + "refused" + "$" + "Rejected Your Request!" ;
-        networkUtility.write(data.clone());
-        textArea.appendText("\nYou rejected "+showPerson.getName()+" request ");
-        user.setMessage(null);
-        }else warning.setText("no donation request found");
     }
 }

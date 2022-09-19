@@ -15,6 +15,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -80,6 +81,9 @@ public class RequestBloodController implements Initializable {
             Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
             stage.setTitle("BloodBank");
             stage.setScene(new Scene(root));
+            stage.getIcons().add(new Image("C:\\Users\\Subhey\\Documents\\Github\\Java_Learning\\blood-donation" +
+                    "-system\\src\\main\\resources\\com\\mahbubalam\\blooddonationsystem\\Rokto2.png"));
+            stage.setResizable(false);
             stage.show();
         }
 

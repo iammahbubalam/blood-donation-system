@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
@@ -103,6 +104,9 @@ public class MainMenuController implements Initializable {
             mainMenuStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             mainMenuStage.setTitle("BloodBank");
             mainMenuStage.setScene(new Scene(root));
+            mainMenuStage.getIcons().add(new Image("C:\\Users\\Subhey\\Documents\\Github\\Java_Learning\\blood-donation" +
+                    "-system\\src\\main\\resources\\com\\mahbubalam\\blooddonationsystem\\Rokto2.png"));
+            mainMenuStage.setResizable(false);
             mainMenuStage.show();
         } catch (Exception e) {
             e.printStackTrace();

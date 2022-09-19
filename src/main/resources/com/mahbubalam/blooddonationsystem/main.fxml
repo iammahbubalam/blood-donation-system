@@ -46,7 +46,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@volunteer_activism_FILL0_wght400_GRAD0_opsz48.png" />
+                              <Image url="@donateLogo.gif" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -104,7 +104,7 @@
                         <Font size="50.0" />
                      </font>
                   </Label>
-                  <Label layoutX="223.0" layoutY="281.0" text="Stay fit and eat right and donate blood">
+                  <Label layoutX="223.0" layoutY="281.0" text="Stay Fit and Eat Right and Donate Blood">
                      <font>
                         <Font size="20.0" />
                      </font>
