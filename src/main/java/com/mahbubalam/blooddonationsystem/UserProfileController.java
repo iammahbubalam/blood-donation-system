@@ -131,10 +131,11 @@ public class UserProfileController implements Initializable, Runnable {
             data.message = user.getUserId() + "$" + showPerson.getId() + "$" + user.getName() + "$" + "text" + "$" + textField.getText();
             networkUtility.write(data.clone());
             textArea.appendText("\n"+textField.getText() + "\n");
+            textField.setText("");
         }
     }
 
-    public void accept(ActionEvent event) throws SQLException, ClassNotFoundException {
+    public void accept(ActionEvent event) throws SQLException, ClassNotFoundException, CloneNotSupportedException {
         warning.setText("");
         if (user.getMessage() != null) {
             String[] message = user.getMessage().split("\\$");
@@ -142,6 +143,9 @@ public class UserProfileController implements Initializable, Runnable {
             PersonController.setReadyToDonateFalse(user.getUserId());
             PersonController.readyToDonateEvent( user.getUserId());
             warning.setText("donation done");
+            Data data = new Data();
+            data.message = user.getUserId() + "$" + showPerson.getId() + "$" + user.getName() + "$" + "accepted" + "$" + "Accepted Your Request!" ;
+            networkUtility.write(data.clone());
             hospitalNameTExtFild.setText("");
             textArea.appendText("\nyou accept donation request");
             user.setMessage(null);
@@ -171,7 +175,17 @@ public class UserProfileController implements Initializable, Runnable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("BloodBank");
         stage.setScene(new Scene(root));
-        Thread.interrupted();
         stage.show();
+    }
+
+    public void reject(ActionEvent event) throws CloneNotSupportedException {
+        warning.setText("");
+        if (user.getMessage() != null) {
+        Data data = new Data();
+        data.message = user.getUserId() + "$" + showPerson.getId() + "$" + user.getName() + "$" + "refused" + "$" + "Rejected Your Request!" ;
+        networkUtility.write(data.clone());
+        textArea.appendText("\nYou rejected "+showPerson.getName()+" request ");
+        user.setMessage(null);
+        }else warning.setText("no donation request found");
     }
 }

@@ -51,12 +51,12 @@ public class ReaderWriterServer implements Runnable {
             }
             if (words[3].equals("accepted")) {
                 Information info = clientList.get(Integer.parseInt(words[1]));
-                String msgToSend = words[0] + "$" + words[2] + "$" + "accepted" + "$" + "Accepted your request" + "$" + words[4];
+                String msgToSend = words[2] + "$" + "accepted"  + "$" + words[4];
                 info.networkUtility.write(msgToSend);
             }
             if (words[3].equals("refused")) {
                 Information info = clientList.get(Integer.parseInt(words[1]));
-                String msgToSend = words[0] + "$" + words[2] + "$" + "refused" + "$" + "Refused your request" + "$" + words[4];
+                String msgToSend =  words[2] + "$" + "refused" + "$"  + words[4];
                 info.networkUtility.write(msgToSend);
             }
         }

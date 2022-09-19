@@ -102,5 +102,10 @@
       <TextField fx:id="hospitalNameTExtFild" layoutX="512.0" layoutY="413.0" prefHeight="26.0" prefWidth="181.0" promptText="Enter Hospital Name" />
       <Text fx:id="warning" fill="#b22020" layoutX="531.0" layoutY="641.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="181.0" />
       <JFXButton layoutX="669.0" layoutY="638.0" onAction="#back" prefHeight="25.0" prefWidth="86.0" text="Click to Back" textFill="RED" />
+      <JFXButton buttonType="RAISED" layoutX="512.0" layoutY="520.0" onAction="#reject" prefHeight="27.0" prefWidth="95.0" ripplerFill="WHITE" style="-fx-background-color: #A60000;" text="Reject" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

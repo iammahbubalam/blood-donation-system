@@ -35,13 +35,13 @@ public class Reader implements Runnable {
             if (words[2].equals("donateBlood")) {
                 userProfileController.textArea.appendText("\n"+words[1] + " Want to donate you blood "+"\n");
             }
-            if (words[3].equals("accepted")) {
-                String msgToSend = words[1] + "  Accepted your request";
-                userProfileController.textArea.appendText("\n"+msgToSend);
+            if (words[1].equals("accepted")) {
+                String msgToSend = words[0] +" "+ words[2];
+                userProfileController.textArea.appendText("\n"+msgToSend+"\n");
             }
-            if (words[3].equals("refused")) {
-                String msgToSend = words[1] + "  Refused your request";
-                userProfileController.textArea.appendText("\n"+msgToSend);
+            if (words[1].equals("refused")) {
+                String msgToSend = words[0] +" "+ words[2];
+                userProfileController.textArea.appendText("\n"+msgToSend+"\n");
             }
         }
     }

@@ -1,7 +1,10 @@
 package com.mahbubalam.blooddonationsystem.server.controller;
 
 import com.mahbubalam.blooddonationsystem.server.entity.Donation;
+import com.mahbubalam.blooddonationsystem.server.model.ShowPerson;
 import com.mahbubalam.blooddonationsystem.server.provider.ConnectionProvider;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 
@@ -22,6 +25,29 @@ public class DonationController {
 
         return donationId;
     }
+    public static ObservableList<Donation> getReceivedDonationById(int id) throws SQLException, ClassNotFoundException {
+        String quarry = "SELECT donation.donation_date,donation.hospital_name FROM person INNER JOIN donation ON donation.received_donner_id = person.id where person.id="+ id+";" ;
+        return getDonationObservableList(quarry);
+    }
 
+    private static ObservableList<Donation> getDonationObservableList(String quarry) throws ClassNotFoundException, SQLException {
+        Date date;
+        String hospitalName;
+        ObservableList<Donation> list = FXCollections.observableArrayList();
+        Connection connection = ConnectionProvider.createConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(quarry);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            date=resultSet.getDate(1);
+            hospitalName=resultSet.getString(2);
+            list.add(new Donation(hospitalName,date,0,0,null));
+        }
+        return list;
+    }
+
+    public static ObservableList<Donation> getDonatedDonationById(int id) throws SQLException, ClassNotFoundException {
+        String quarry = "SELECT donation.donation_date,donation.hospital_name FROM person INNER JOIN donation ON donation.given_donner_id = person.id where person.id="+ id+";" ;
+        return getDonationObservableList(quarry);
+    }
 
 }
