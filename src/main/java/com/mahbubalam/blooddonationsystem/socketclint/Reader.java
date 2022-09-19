@@ -26,7 +26,7 @@ public class Reader implements Runnable {
             System.out.println(actualMessage);
             String[] words = actualMessage.split("\\$");
             if (words[2].equals("text")) {
-                userProfileController.textArea.appendText("\n"+words[1] + " Says " + words[3]+"\n");
+                userProfileController.textArea.appendText("\n"+words[1] + " --> " + words[3]+"\n");
             }
             if (words[2].equals("requestForBlood")) {
                 user.setMessage(actualMessage);

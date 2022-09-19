@@ -1,6 +1,5 @@
 package com.mahbubalam.blooddonationsystem;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.mahbubalam.blooddonationsystem.server.controller.AddressController;
 import com.mahbubalam.blooddonationsystem.server.controller.DonationController;
@@ -130,7 +129,7 @@ public class UserProfileController implements Initializable, Runnable {
             Data data = new Data();
             data.message = user.getUserId() + "$" + showPerson.getId() + "$" + user.getName() + "$" + "text" + "$" + textField.getText();
             networkUtility.write(data.clone());
-            textArea.appendText("\n"+textField.getText() + "\n");
+            textArea.appendText("\n"+"you -->"+textField.getText() + "\n");
             textField.setText("");
         }
     }
