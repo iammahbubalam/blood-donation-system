@@ -1,0 +1,51 @@
+CREATE TABLE `person` (
+   `id` int NOT NULL AUTO_INCREMENT,
+   `blood_group` varchar(255) DEFAULT NULL,
+   `date_of_birth` varchar(255) DEFAULT NULL,
+   `email` varchar(50) NOT NULL,
+   `first_name` varchar(255) DEFAULT NULL,
+   `gender` varchar(255) DEFAULT NULL,
+   `last_name` varchar(255) DEFAULT NULL,
+   `need_blood` bit(1) DEFAULT NULL,
+   `phone_number` varchar(11) NOT NULL,
+   `ready_to_donate` bit(1) DEFAULT NULL,
+   `address_id` int DEFAULT NULL,
+   `password_id` int DEFAULT NULL,
+   PRIMARY KEY (`id`),
+   UNIQUE KEY `UK_585qcyc8qh7bg1fwgm1pj4fus` (`email`),
+   UNIQUE KEY `UK_bpy6a57cio29uxhlwvu9tfetq` (`phone_number`),
+   KEY `FKcy9qnrwljuovfi9rynlyqo77o` (`address_id`),
+   KEY `FKqid5yk0ert7yq8ttd7ve6rwwt` (`password_id`),
+   CONSTRAINT `FKcy9qnrwljuovfi9rynlyqo77o` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`),
+   CONSTRAINT `FKqid5yk0ert7yq8ttd7ve6rwwt` FOREIGN KEY (`password_id`) REFERENCES `password` (`id`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+ CREATE TABLE `address` (
+    `id` int NOT NULL AUTO_INCREMENT,
+    `country` varchar(255) DEFAULT NULL,
+    `district` varchar(255) DEFAULT NULL,
+    `division` varchar(255) DEFAULT NULL,
+    `sub_district` varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+  CREATE TABLE `donation` (
+     `id` int NOT NULL AUTO_INCREMENT,
+     `blood_group` varchar(255) DEFAULT NULL,
+     `donation_date` date DEFAULT NULL,
+     `hospital_name` varchar(255) DEFAULT NULL,
+     `received_donner_id` int DEFAULT NULL,
+     `given_donner_id` int DEFAULT NULL,
+     PRIMARY KEY (`id`),
+     KEY `FKjrlbtghkraf5kifsj7i1g3er5` (`received_donner_id`),
+     KEY `FKm3c11ldqui1ygp9xlmse3of4x` (`given_donner_id`),
+     CONSTRAINT `FKjrlbtghkraf5kifsj7i1g3er5` FOREIGN KEY (`received_donner_id`) REFERENCES `person` (`id`),
+     CONSTRAINT `FKm3c11ldqui1ygp9xlmse3of4x` FOREIGN KEY (`given_donner_id`) REFERENCES `person` (`id`)
+   ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+   CREATE TABLE `password` (
+      `id` int NOT NULL AUTO_INCREMENT,
+      `password` varchar(255) DEFAULT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
