@@ -32,7 +32,7 @@
       </JFXButton>
       <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="387.0" layoutY="14.0" pickOnBounds="true">
          <image>
-            <Image url="@icons8-trust-96.png" />
+            <Image url="@img/icons8-trust-96.png" />
          </image>
       </ImageView>
    </children>

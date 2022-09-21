@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.RequestBloodController">
+<AnchorPane prefHeight="705.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mahbubalam.blooddonationsystem.RequestBloodController">
    <children>
-      <TableView fx:id="tableView" editable="true" layoutX="9.0" layoutY="206.0" onMouseClicked="#omMouseClick" prefHeight="482.0" prefWidth="779.0">
+      <TableView fx:id="tableView" editable="true" layoutX="11.0" layoutY="198.0" onMouseClicked="#omMouseClick" prefHeight="482.0" prefWidth="779.0">
          <columns>
             <TableColumn fx:id="id" prefWidth="68.0" text="ID" />
             <TableColumn fx:id="nameColumn" prefWidth="191.0" text="Name" />
@@ -25,14 +25,14 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <JFXButton fx:id="loadPeople" alignment="TOP_CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="685.0" layoutY="152.0" onAction="#onClickLoadButton" prefHeight="27.0" prefWidth="102.0" ripplerFill="#e73b3b" style="-fx-background-color: #a60000;" text="Load" textFill="#e8e8e8">
+      <JFXButton fx:id="loadPeople" alignment="TOP_CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="684.0" layoutY="134.0" onAction="#onClickLoadButton" prefHeight="27.0" prefWidth="102.0" ripplerFill="#e73b3b" style="-fx-background-color: #a60000;" text="Load" textFill="#e8e8e8">
          <font>
             <Font size="16.0" />
          </font>
       </JFXButton>
       <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="380.0" layoutY="12.0" pickOnBounds="true">
          <image>
-            <Image url="@requestMenuLogo.png" />
+            <Image url="@img/requestMenuLogo.png" />
          </image>
       </ImageView>
    </children>

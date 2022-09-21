@@ -84,8 +84,7 @@ public class LoginController {
             loginStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             loginStage.setTitle("Blood Bank");
             loginStage.setScene(new Scene(root));
-            loginStage.getIcons().add(new Image("C:\\Users\\Subhey\\Documents\\Github\\Java_Learning\\blood-donation" +
-                    "-system\\src\\main\\resources\\com\\mahbubalam\\blooddonationsystem\\Rokto2.png"));
+            loginStage.getIcons().add(new Image("E:\\IdeaProjects\\blood-donation-system\\src\\main\\resources\\com\\mahbubalam\\blooddonationsystem\\img\\Rokto2.png"));
             loginStage.setResizable(false);
             loginStage.show();
         } catch (Exception e) {

@@ -56,7 +56,7 @@
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons8-address-48.png" />
+                  <Image url="@img/icons8-address-48.png" />
                </image>
             </ImageView>
          </graphic>
@@ -69,7 +69,7 @@
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons8-collapse-arrow-48.png" />
+                  <Image url="@img/icons8-collapse-arrow-48.png" />
                </image>
             </ImageView>
          </graphic>
@@ -81,7 +81,7 @@
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons8-done-48.png" />
+                  <Image url="@img/icons8-done-48.png" />
                </image>
             </ImageView>
          </graphic>
@@ -93,7 +93,7 @@
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons8-email-send-48.png" />
+                  <Image url="@img/icons8-email-send-48.png" />
                </image>
             </ImageView>
          </graphic>
@@ -109,7 +109,7 @@
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons8-gender-64.png" />
+                  <Image url="@img/icons8-gender-64.png" />
                </image>
             </ImageView>
          </graphic>
@@ -121,7 +121,7 @@
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@bloodtype_FILL0_wght400_GRAD0_opsz48.png" />
+                  <Image url="@img/bloodtype_FILL0_wght400_GRAD0_opsz48.png" />
                </image>
             </ImageView>
          </graphic>
@@ -133,7 +133,7 @@
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true">
                <image>
-                  <Image url="@icons8-name-48.png" />
+                  <Image url="@img/icons8-name-48.png" />
                </image>
             </ImageView>
          </graphic>
@@ -145,7 +145,7 @@
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons8-smartphone-48.png" />
+                  <Image url="@img/icons8-smartphone-48.png" />
                </image>
             </ImageView>
          </graphic>
@@ -157,7 +157,7 @@
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons8-mail-482.png" />
+                  <Image url="@img/icons8-mail-482.png" />
                </image>
             </ImageView>
          </graphic>
@@ -169,14 +169,14 @@
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons8-thursday-48.png" />
+                  <Image url="@img/icons8-thursday-48.png" />
                </image>
             </ImageView>
          </graphic>
       </Label>
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="479.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@icons8-hospital-3-48.png" />
+            <Image url="@img/icons8-hospital-3-48.png" />
          </image>
       </ImageView>
       <JFXButton buttonType="RAISED" layoutX="512.0" layoutY="520.0" onAction="#reject" prefHeight="27.0" prefWidth="95.0" ripplerFill="WHITE" style="-fx-background-color: #A60000;" text="Reject" textAlignment="CENTER" textFill="WHITE">

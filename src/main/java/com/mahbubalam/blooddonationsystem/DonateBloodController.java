@@ -72,8 +72,7 @@ public class DonateBloodController implements Initializable {
             Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
             stage.setTitle("BloodBank");
             stage.setScene(new Scene(root));
-            stage.getIcons().add(new Image("C:\\Users\\Subhey\\Documents\\Github\\Java_Learning\\blood-donation" +
-                    "-system\\src\\main\\resources\\com\\mahbubalam\\blooddonationsystem\\Rokto2.png"));
+//            stage.getIcons().add(new Image("Rokto2.png"));
             stage.setResizable(false);
             stage.show();
         }

@@ -104,8 +104,7 @@ public class MainMenuController implements Initializable {
             mainMenuStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             mainMenuStage.setTitle("BloodBank");
             mainMenuStage.setScene(new Scene(root));
-            mainMenuStage.getIcons().add(new Image("C:\\Users\\Subhey\\Documents\\Github\\Java_Learning\\blood-donation" +
-                    "-system\\src\\main\\resources\\com\\mahbubalam\\blooddonationsystem\\Rokto2.png"));
+            mainMenuStage.getIcons().add(new Image("E:\\IdeaProjects\\blood-donation-system\\src\\main\\resources\\com\\mahbubalam\\blooddonationsystem\\Rokto2.png"));
             mainMenuStage.setResizable(false);
             mainMenuStage.show();
         } catch (Exception e) {

@@ -22,7 +22,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons8-user.gif" />
+                              <Image url="@img/icons8-user.gif" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -34,7 +34,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@bloodtype_FILL0_wght400_GRAD0_opsz48.png" />
+                              <Image url="@img/bloodtype_FILL0_wght400_GRAD0_opsz48.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -46,7 +46,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@donateLogo.gif" />
+                              <Image url="@img/donateLogo.gif" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -58,7 +58,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@logout_FILL0_wght400_GRAD0_opsz48.png" />
+                              <Image url="@img/logout_FILL0_wght400_GRAD0_opsz48.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -70,7 +70,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons8-lock.gif" />
+                              <Image url="@img/icons8-lock.gif" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -82,7 +82,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons8-edit.gif" />
+                              <Image url="@img/icons8-edit.gif" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -90,7 +90,7 @@
                   <Text fx:id="txt" layoutX="27.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="146.13671875" />
                   <ImageView fitHeight="188.0" fitWidth="198.0" layoutX="7.0" layoutY="4.0" pickOnBounds="true">
                      <image>
-                        <Image url="@BloodSource.png" />
+                        <Image url="@img/BloodSource.png" />
                      </image>
                   </ImageView>
                </children>
